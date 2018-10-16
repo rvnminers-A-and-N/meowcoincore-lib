@@ -34,7 +34,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/underdarkskies/ravencore-lib.git"
+    "url": "https://github.com/OverstockMedici/ravencore-lib.git"
   },
   "browser": {
     "request": "browser-request"
@@ -46,10 +46,10 @@
     "elliptic": "=3.0.3",
     "inherits": "=2.0.1",
     "lodash": "^3.10.1",
-    "node-x16r": "underdarkskies/node-x16r"
+    "node-x16r": "OverstockMedici/node-x16r"
   },
   "devDependencies": {
-    "ravencore-build": "underdarkskies/ravencore-build",
+    "ravencore-build": "OverstockMedici/ravencore-build",
     "brfs": "^1.2.0",
     "chai": "^1.10.0",
     "gulp": "^3.8.10",

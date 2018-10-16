@@ -35,14 +35,14 @@ To get started, just `npm install ravencore` or `bower install ravencore`.
 
 Some functionality is implemented as a module that can be installed separately:
 
-* [Payment Protocol Support](https://github.com/underdarkskies/ravencore-payment-protocol)
-* [Peer to Peer Networking](https://github.com/underdarkskies/ravencore-p2p)
-* [Ravencoin Core JSON-RPC](https://github.com/underdarkskies/ravend-rpc)
-* [Payment Channels](https://github.com/underdarkskies/ravencore-channel)
-* [Mnemonics](https://github.com/underdarkskies/ravencore-mnemonic)
-* [Elliptical Curve Integrated Encryption Scheme](https://github.com/underdarkskies/ravencore-ecies)
-* [Blockchain Explorers](https://github.com/underdarkskies/ravencore-explorers)
-* [Signed Messages](https://github.com/underdarkskies/ravencore-message)
+* [Payment Protocol Support](https://github.com/OverstockMedici/ravencore-payment-protocol)
+* [Peer to Peer Networking](https://github.com/OverstockMedici/ravencore-p2p)
+* [Ravencoin Core JSON-RPC](https://github.com/OverstockMedici/ravend-rpc)
+* [Payment Channels](https://github.com/OverstockMedici/ravencore-channel)
+* [Mnemonics](https://github.com/OverstockMedici/ravencore-mnemonic)
+* [Elliptical Curve Integrated Encryption Scheme](https://github.com/OverstockMedici/ravencore-ecies)
+* [Blockchain Explorers](https://github.com/OverstockMedici/ravencore-explorers)
+* [Signed Messages](https://github.com/OverstockMedici/ravencore-message)
 
 # Examples
 

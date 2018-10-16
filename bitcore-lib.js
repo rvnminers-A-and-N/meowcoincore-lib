@@ -52217,7 +52217,7 @@ module.exports={
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/underdarkskies/ravencore-lib.git"
+    "url": "https://github.com/OverstockMedici/ravencore-lib.git"
   },
   "browser": {
     "request": "browser-request"
@@ -52231,7 +52231,7 @@ module.exports={
     "lodash": "=3.10.1"
   },
   "devDependencies": {
-    "ravencore-build": "underdarkskies/ravencore-build",
+    "ravencore-build": "OverstockMedici/ravencore-build",
     "brfs": "^1.2.0",
     "chai": "^1.10.0",
     "gulp": "^3.8.10",
