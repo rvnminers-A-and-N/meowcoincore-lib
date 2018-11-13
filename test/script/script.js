@@ -249,6 +249,39 @@ describe('Script', function() {
     });
   });
 
+  describe('#isAssetOut', function() {
+
+    it('should know this is a new asset script', function () {
+      Script('OP_DUP OP_HASH160 20 0xb0ae0e41ba4c035210d55a05a285f641e1a653b5 OP_EQUALVERIFY OP_CHECKSIG OP_RVN_ASSET 11 72766e7105415353455400e8764817000000000100 OP_DROP')
+        .isAssetOut().should.equal(true);
+    });
+
+    it('should know this is a new asset script', function () {
+      Script('76a914b0ae0e41ba4c035210d55a05a285f641e1a653b588acc01572766e7105415353455400e876481700000000010075')
+        .isAssetOut().should.equal(true);
+    });
+
+    it('should know this is a transfer asset script', function () {
+      Script('OP_DUP OP_HASH160 20 0x568ee61e165aa1d6c01a196079a169afa173bbc7 OP_EQUALVERIFY OP_CHECKSIG OP_RVN_ASSET 18 72766e7405415353455400e40b5402000000 OP_DROP')
+        .isAssetOut().should.equal(true);
+    });
+
+    it('should know this is a transfer asset script', function () {
+      Script('76a914568ee61e165aa1d6c01a196079a169afa173bbc788acc01272766e7405415353455400e40b540200000075')
+        .isAssetOut().should.equal(true);
+    });
+
+    it('should know this is a reissue asset script', function () {
+      Script('OP_DUP OP_HASH160 20 0x083686d841b8928dbee0c559adf0f0568baa4a44 OP_EQUALVERIFY OP_CHECKSIG OP_RVN_ASSET 20 72766e7205415353455400d0ed902e000000ff01 OP_DROP')
+        .isAssetOut().should.equal(true);
+    });
+
+    it('should know this is a reissue asset script', function () {
+      Script('76a914083686d841b8928dbee0c559adf0f0568baa4a4488acc01472766e7205415353455400d0ed902e000000ff0175')
+        .isAssetOut().should.equal(true);
+    });
+  });
+
   describe('#isPublicKeyIn', function() {
     it('correctly identify scriptSig as a public key in', function() {
       // from txid: 5c85ed63469aa9971b5d01063dbb8bcdafd412b2f51a3d24abf2e310c028bbf8
@@ -504,8 +537,11 @@ describe('Script', function() {
   });
 
   describe('#classifyOutput', function() {
-    it('should classify public key hash out', function() {
+    it('should classify public key hash out', function () {
       Script('OP_DUP OP_HASH160 20 0x0000000000000000000000000000000000000000 OP_EQUALVERIFY OP_CHECKSIG').classifyOutput().should.equal(Script.types.PUBKEYHASH_OUT);
+    }); 
+    it('should classify public key hash asset out', function () {
+      Script('OP_DUP OP_HASH160 20 0x0000000000000000000000000000000000000000 OP_EQUALVERIFY OP_CHECKSIG OP_RVN_ASSET 20 0x0000000000000000000000000000000000000000 OP_DROP').classifyOutput().should.equal(Script.types.ASSET_OUT);
     });
     it('shouldn\'t classify public key hash in', function() {
       Script('47 0x3044022077a8d81e656c4a1c1721e68ce35fa0b27f13c342998e75854858c12396a15ffa02206378a8c6959283c008c87a14a9c0ada5cf3934ac5ee29f1fef9cac6969783e9801 21 0x03993c230da7dabb956292851ae755f971c50532efc095a16bee07f83ab9d262df').classifyOutput().should.equal(Script.types.UNKNOWN);
@@ -542,6 +578,9 @@ describe('Script', function() {
   describe('#classify', function() {
     it('should classify public key hash out', function() {
       Script('OP_DUP OP_HASH160 20 0x0000000000000000000000000000000000000000 OP_EQUALVERIFY OP_CHECKSIG').classify().should.equal(Script.types.PUBKEYHASH_OUT);
+    });
+    it('should classify public key hash asset out', function () {
+      Script('OP_DUP OP_HASH160 20 0x0000000000000000000000000000000000000000 OP_EQUALVERIFY OP_CHECKSIG OP_RVN_ASSET 20 0x0000000000000000000000000000000000000000 OP_DROP').classify().should.equal(Script.types.ASSET_OUT);
     });
     it('should classify public key hash in', function() {
       Script('47 0x3044022077a8d81e656c4a1c1721e68ce35fa0b27f13c342998e75854858c12396a15ffa02206378a8c6959283c008c87a14a9c0ada5cf3934ac5ee29f1fef9cac6969783e9801 21 0x03993c230da7dabb956292851ae755f971c50532efc095a16bee07f83ab9d262df').classify().should.equal(Script.types.PUBKEYHASH_IN);
