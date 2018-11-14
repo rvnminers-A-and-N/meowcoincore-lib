@@ -43,6 +43,7 @@ ravencore.errors = require('./lib/errors');
 
 // main ravencoin library
 ravencore.Address = require('./lib/address');
+ravencore.Asset = require('./lib/asset');
 ravencore.Block = require('./lib/block');
 ravencore.MerkleBlock = require('./lib/block/merkleblock');
 ravencore.BlockHeader = require('./lib/block/blockheader');
