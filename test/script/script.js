@@ -10,6 +10,7 @@ var Networks = ravencore.Networks;
 var Opcode = ravencore.Opcode;
 var PublicKey = ravencore.PublicKey;
 var Address = ravencore.Address;
+var Asset = ravencore.Asset;
 
 describe('Script', function() {
 
@@ -937,6 +938,34 @@ describe('Script', function() {
     });
     it('for a standard opreturn output', function() {
       expect(BufferUtil.equal(Script('OP_RETURN 1 0xFF').getData(), new Buffer([255]))).to.be.true();
+    });
+    it('for a standard issue asset output', function() {
+      var script = '76a914b0ae0e41ba4c035210d55a05a285f641e1a653b588acc01572766e7105415353455400e876481700000000010075';
+      var asset = Script(script).getData();
+      asset.name.should.eq("ASSET");
+      asset.amount.should.eq(100000000000);
+      asset.type.should.eq(Asset.assetTypes.ISSUE);
+      asset.units.should.eq(0);
+      asset.reissuable.should.eq(true);
+      asset.hasIPFS.should.eq(false);
+      expect(asset).not.to.have.key('IPFSHash');
+    });
+    it('for a standard transfer asset output', function() {
+      var script = '76a914568ee61e165aa1d6c01a196079a169afa173bbc788acc01272766e7405415353455400e40b540200000075';
+      var asset = Script(script).getData();
+      asset.name.should.eq("ASSET");
+      asset.amount.should.eq(10000000000);
+      asset.type.should.eq(Asset.assetTypes.TRANSFER);
+    });
+    it('for a standard reissue asset output', function() {
+      var script = '76a914083686d841b8928dbee0c559adf0f0568baa4a4488acc01472766e7205415353455400d0ed902e000000ff0175';
+      var asset = Script(script).getData();
+      asset.name.should.eq("ASSET");
+      asset.amount.should.eq(200000000000);
+      asset.type.should.eq(Asset.assetTypes.REISSUE);
+      expect(asset).not.to.have.key('units');
+      asset.reissuable.should.eq(true);
+      expect(asset).not.to.have.key('IPFSHash');
     });
     it('fails if content is not recognized', function() {
       expect(function() {
