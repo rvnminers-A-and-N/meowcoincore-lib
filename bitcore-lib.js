@@ -52217,7 +52217,7 @@ module.exports={
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OverstockMedici/ravencore-lib.git"
+    "url": "https://github.com/RavenDevKit/ravencore-lib.git"
   },
   "browser": {
     "request": "browser-request"
