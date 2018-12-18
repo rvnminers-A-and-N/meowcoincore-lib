@@ -8,7 +8,8 @@
     "lint": "gulp lint",
     "test": "gulp test",
     "coverage": "gulp coverage",
-    "build": "gulp"
+    "build": "gulp",
+    "watch": "watchify --require ./index.js:ravencore-lib -o ravencore-lib.js"
   },
   "contributors": [
     {
@@ -53,7 +54,8 @@
     "chai": "^1.10.0",
     "gulp": "^3.9.1",
     "ravencore-build": "RavenDevKit/ravencore-build",
-    "sinon": "^1.13.0"
+    "sinon": "^1.13.0",
+    "watchify": "^3.11.0"
   },
   "license": "MIT"
 }

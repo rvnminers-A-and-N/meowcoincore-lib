@@ -57,6 +57,7 @@ ravencore.Script = require('./lib/script');
 ravencore.Transaction = require('./lib/transaction');
 ravencore.URI = require('./lib/uri');
 ravencore.Unit = require('./lib/unit');
+ravencore.Insight = require('./lib/insight');
 
 // dependencies, subject to change
 ravencore.deps = {};
