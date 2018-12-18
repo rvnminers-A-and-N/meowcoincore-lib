@@ -1,5 +1,5 @@
 {
-  "name": "ravencore-lib",
+  "name": "@ravendevkit/ravencore-lib",
   "version": "1.0.3",
   "description": "A pure and powerful JavaScript Ravencoin library.",
   "author": "Under",
@@ -49,10 +49,10 @@
     "node-x16r": "RavenDevKit/node-x16r"
   },
   "devDependencies": {
-    "ravencore-build": "RavenDevKit/ravencore-build",
     "brfs": "^1.2.0",
     "chai": "^1.10.0",
-    "gulp": "^3.8.10",
+    "gulp": "^3.9.1",
+    "ravencore-build": "RavenDevKit/ravencore-build",
     "sinon": "^1.13.0"
   },
   "license": "MIT"
