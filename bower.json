@@ -1,8 +1,8 @@
 {
   "name": "ravencore-lib",
-  "main": "./ravencore-lib.min.js",
-  "version": "1.0.0",
-  "homepage": "https://github.com/RavenDevKit",
+  "main": "./ravencore-lib.js",
+  "version": "1.0.3",
+  "homepage": "https://github.com/RavenDevKit/ravencore-lib",
   "authors": [
     "Under"
   ],
@@ -25,6 +25,14 @@
     "index.js",
     "karma.conf.js",
     "npm-shrinkwrap.json",
-    "test"
+    "test",
+    "LICENSE",
+    "README.md",
+    "benchmark",
+    "bitcore-lib.js",
+    "docs",
+    "package.json",
+    "package-lock.json",
+    "ravencoin-utils"
   ]
 }
