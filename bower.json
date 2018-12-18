@@ -1,7 +1,7 @@
 {
   "name": "ravencore-lib",
   "main": "./ravencore-lib.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/RavenDevKit/ravencore-lib",
   "authors": [
     "Under"
