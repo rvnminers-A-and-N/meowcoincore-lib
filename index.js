@@ -57,6 +57,17 @@ ravencore.Script = require('./lib/script');
 ravencore.Transaction = require('./lib/transaction');
 ravencore.URI = require('./lib/uri');
 ravencore.Unit = require('./lib/unit');
+
+// Insight-related
+// use XMLHttpRequest in browser window if available, otherwise use wrapper
+// this is to satisfy browser-request which looks for it in global scope
+var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+if (typeof window !== 'undefined' && typeof window.XMLHttpRequest === 'function') {
+  // console.log("XMLHttpRequest is available in window");
+} else {
+  // console.log("setting XMLHttpRequest in global");
+  global.XMLHttpRequest = XMLHttpRequest;
+}
 ravencore.Insight = require('./lib/insight');
 
 // dependencies, subject to change
@@ -65,10 +76,8 @@ ravencore.deps.bnjs = require('bn.js');
 ravencore.deps.bs58 = require('bs58');
 ravencore.deps.Buffer = Buffer;
 ravencore.deps.elliptic = require('elliptic');
-// no x16r available to browser bundle
-if (require('fs').accessSync) {
-  ravencore.deps.nodeX16r = require('node-x16r');
-}
+// this may be undefined -- no x16r available to browser bundle
+ravencore.deps.nodeX16r = require('@ravendevkit/node-x16r');
 ravencore.deps._ = require('lodash');
 
 // Internal usage, exposed for testing/advanced tweaking

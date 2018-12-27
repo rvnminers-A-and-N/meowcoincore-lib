@@ -3,6 +3,7 @@
 var should = require('chai').should();
 
 var ravencore = require('../..');
+var Hash = require('../../lib/crypto/hash');
 var MerkleBlock = ravencore.MerkleBlock;
 var BufferReader = ravencore.encoding.BufferReader;
 var BufferWriter = ravencore.encoding.BufferWriter;
@@ -16,6 +17,10 @@ describe('MerkleBlock', function() {
   var blockbuf  = new Buffer(blockhex,'hex');
   var blockJSON = JSON.stringify(data.JSON[0]);
   var blockObject = JSON.parse(JSON.stringify(data.JSON[0]));
+
+  // Skipping remaining tests as they all go through x16r which isn't supported in the browser.
+  // TODO: Some functionality could be modified/elided to give partial support when hashing isn't available.
+  if (Hash.X16R_SUPPORTED) {
 
   describe('#constructor', function() {
     it('should make a new merkleblock from buffer', function() {
@@ -195,5 +200,8 @@ describe('MerkleBlock', function() {
     });
 
   });
+
+  // if (Hash.X16R_SUPPORTED)
+  }
 
 });
