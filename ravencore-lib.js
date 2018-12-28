@@ -12251,18 +12251,13 @@ module.exports = {
 };
 
 },{"../errors":18,"buffer":122,"lodash":197}],48:[function(require,module,exports){
-if (typeof window !== 'undefined') {
-    var nVer = navigator.appVersion;
-    var nAgt = navigator.userAgent;
-    var browserName = navigator.appName;
-
-    console.log(nVer + " / " + nAgt + " / " + browserName);
-}
+// Don't export bindings unless there is fs access.
+// Intended to disable x16r import in browser where extensions are unavailable.
 if (require('fs').accessSync) {
-    console.log('exporting bindings... ************************');
+    // console.log('Exporting x16r bindings.');
     module.exports = require('bindings')('nodex16r.node');
 } else {
-    console.log('can\'t export bindings... ********************');
+    // console.log('Could not export x16r bindings (no fs access).');
 }
 
 },{"bindings":68,"fs":118}],49:[function(require,module,exports){
@@ -57308,7 +57303,7 @@ module.exports={
     "request": "browser-request"
   },
   "dependencies": {
-    "@ravendevkit/node-x16r": "^1.0.0",
+    "@ravendevkit/node-x16r": "^1.0.2",
     "bn.js": "=2.0.4",
     "browser-request": "^0.3.3",
     "bs58": "=2.0.0",

@@ -41,7 +41,7 @@
     "request": "browser-request"
   },
   "dependencies": {
-    "@ravendevkit/node-x16r": "^1.0.0",
+    "@ravendevkit/node-x16r": "^1.0.2",
     "bn.js": "=2.0.4",
     "browser-request": "^0.3.3",
     "bs58": "=2.0.0",
