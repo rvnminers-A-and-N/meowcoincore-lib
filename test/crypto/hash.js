@@ -149,8 +149,6 @@ describe('Hash', function() {
       });
 
     });
-  } else {
-    console.log("x16r hashing not supported in this environment... skipping test.");
   }
 
 });
