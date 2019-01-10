@@ -95,4 +95,11 @@ describe('Asset', function () {
     }).should.not.throw();
   });
 
+  it('can serialize TRANSFER', function() {
+    (function() {
+      var asset = new Asset({ type: Asset.assetTypes.TRANSFER, name: "ASSET", amount: 500000000});
+      asset.toHex().should.eq("72766e740541535345540065cd1d00000000");
+    }).should.not.throw();
+  })
+
 });

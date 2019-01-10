@@ -790,6 +790,16 @@ describe('Script', function() {
       s._network.should.equal(pubkey.network);
     });
   });
+  describe('#assetOut', function() {
+    it('should append a transfer', function() {
+      var address = Address.fromString('mufyRWiGJQwNTzjbV7JPC8yGuuYeYo91Hk');
+      var asset = new Asset({ type: Asset.assetTypes.TRANSFER, name: "ASSET", amount: 500000000 });
+      var s = Script.buildPublicKeyHashOut(address).assetOut(asset);
+      should.exist(s);
+      s.toString().should.equal('OP_DUP OP_HASH160 20 0x9b46725d97779a0a1454da3e3516bd97670575df OP_EQUALVERIFY OP_CHECKSIG OP_RVN_ASSET 18 0x72766e740541535345540065cd1d00000000 OP_DROP');
+      s.toHex().should.equal('76a9149b46725d97779a0a1454da3e3516bd97670575df88acc01272766e740541535345540065cd1d0000000075');
+    });
+  });
   describe('#buildPublicKeyOut', function() {
     it('should create script from public key', function() {
       var pubkey = new PublicKey('022df8750480ad5b26950b25c7ba79d3e37d75f640f8e5d9bcd5b150a0f85014da');
