@@ -76,8 +76,6 @@ ravencore.deps.bnjs = require('bn.js');
 ravencore.deps.bs58 = require('bs58');
 ravencore.deps.Buffer = Buffer;
 ravencore.deps.elliptic = require('elliptic');
-// this may be undefined -- no x16r available to browser bundle
-ravencore.deps.nodeX16r = require('@ravendevkit/node-x16r');
 ravencore.deps._ = require('lodash');
 
 // Internal usage, exposed for testing/advanced tweaking
