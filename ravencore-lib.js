@@ -2065,14 +2065,17 @@ Hash.sha512hmac = function(data, key) {
   return Hash.hmac(Hash.sha512, data, key);
 };
 
-// Ravencoin x16r hashing
-var X16R = require('@ravendevkit/node-x16r');
+// Ravencoin x16r hashing -- use if available
+Hash.X16R_SUPPORTED = false;
 
-Hash.X16R_SUPPORTED = (typeof X16R.x16r === 'function');
-// console.log("X16R_SUPPORTED: " + Hash.X16R_SUPPORTED);
+try {
+  var X16R = require('@ravendevkit/node-x16r');
+  Hash.X16R_SUPPORTED = (typeof X16R.x16r === 'function');
+} catch (er) {}
+console.log("X16R_SUPPORTED: " + Hash.X16R_SUPPORTED);
 
 Hash.x16r = function (buf) {
-  // no x16r available to browser bundle
+  // no x16r available on some platforms
   if (Hash.X16R_SUPPORTED) {
     $.checkArgument(BufferUtil.isBuffer(buf));
     return BufferUtil.reverse(X16R.x16r(buf));
@@ -27394,6 +27397,16 @@ module.exports={
   "_inBundle": false,
   "_integrity": "sha512-BsXLz5sqX8OHcsh7CqBMztyXARmGQ3LWPtGjJi6DiJHq5C/qvi9P3OqgswKSDftbu8+IoI/QDTAm2fFnQ9SZSQ==",
   "_location": "/browserify-sign/elliptic",
+  "_nodeVersion": "10.5.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/elliptic_6.4.1_1533787091502_0.6309761823717674"
+  },
+  "_npmUser": {
+    "name": "indutny",
+    "email": "fedor@indutny.com"
+  },
+  "_npmVersion": "6.3.0",
   "_phantomChildren": {},
   "_requested": {
     "type": "range",
@@ -27411,7 +27424,7 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz",
   "_shasum": "c2d0b7776911b86722c632c3c06c60f2f819939a",
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/cfox/rdk/ravencore-lib/node_modules/browserify-sign",
+  "_where": "/Users/cfox/rvn/rdk/ravencore-lib/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -27447,9 +27460,19 @@ module.exports={
     "jshint": "^2.6.0",
     "mocha": "^2.1.0"
   },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-BsXLz5sqX8OHcsh7CqBMztyXARmGQ3LWPtGjJi6DiJHq5C/qvi9P3OqgswKSDftbu8+IoI/QDTAm2fFnQ9SZSQ==",
+    "shasum": "c2d0b7776911b86722c632c3c06c60f2f819939a",
+    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz",
+    "fileCount": 17,
+    "unpackedSize": 118371,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJba7vUCRA9TVsSAnZWagAA+gcP/jWaj5GmDZ0YFi/X4g5O\nx+pxu9i3HbP9YqywT7rz3XFXSaytu0LQDeDEbddl523X69tsbKfzHRTcnW8n\n2r0VjPhttRm+0RpEhBwjSIK34VkQA1xIWh2ugOToKXVCFVLM5VFDPGzbiN6x\n/hpL7gj1hoCRVmuhjnqFQ+vPKACKfv1Eq4CsRmu2focmP37kQpWQlweD/z4V\nJF4NxA33Fvp13Fl+9g4sPHyhUVsW9ojVaG3Ijn70pCaGQM18UPlbODkWQ1QX\nAgteOFjkIOtcalJk3B3qsM8GZeHEcAFvt2T73miJkHdCGNmRQS45Ede+gnj0\nlLlZJsCCKUHtTqrlprHo6AgMnBZufmytyozYAHC1/JYniazSBi2yPHtQeniR\nl69BfiRBdD2rNrMPwmCNRkMqrgel5WMGpaD0xdaFAHF1Ru2ZQFKsA7KvPGgp\nA20+LN11cCib67Pg5XDyrZ92T3yXec+6gQ3iq9d9UBZKFGl0P8ebVqq1LrUJ\na6nekwMpRISWnKcqV72XVmQdBmUWHq9VfVLsWJzVIJqtpHmUO7q74ACP3i4W\n0/F1REeI0YEhh3NjeStdDecfjlu7PY0pLQpbk2I3ms+6DO+cAfeDEev5jFBK\nwQabRNhITeT1FVtxZAcApj33fnCdqwaWr1NS00K5ZRqhDTTzPr/O4KRN4CR1\npstU\r\n=UVBB\r\n-----END PGP SIGNATURE-----\r\n"
+  },
   "files": [
     "lib"
   ],
+  "gitHead": "523da1cf71ddcfd607fbdee1858bc2af47f0e700",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
     "EC",
@@ -27459,6 +27482,12 @@ module.exports={
   ],
   "license": "MIT",
   "main": "lib/elliptic.js",
+  "maintainers": [
+    {
+      "name": "indutny",
+      "email": "fedor@indutny.com"
+    }
+  ],
   "name": "elliptic",
   "repository": {
     "type": "git",
@@ -30052,6 +30081,16 @@ module.exports={
   "_inBundle": false,
   "_integrity": "sha512-BsXLz5sqX8OHcsh7CqBMztyXARmGQ3LWPtGjJi6DiJHq5C/qvi9P3OqgswKSDftbu8+IoI/QDTAm2fFnQ9SZSQ==",
   "_location": "/create-ecdh/elliptic",
+  "_nodeVersion": "10.5.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/elliptic_6.4.1_1533787091502_0.6309761823717674"
+  },
+  "_npmUser": {
+    "name": "indutny",
+    "email": "fedor@indutny.com"
+  },
+  "_npmVersion": "6.3.0",
   "_phantomChildren": {},
   "_requested": {
     "type": "range",
@@ -30069,7 +30108,7 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz",
   "_shasum": "c2d0b7776911b86722c632c3c06c60f2f819939a",
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/cfox/rdk/ravencore-lib/node_modules/create-ecdh",
+  "_where": "/Users/cfox/rvn/rdk/ravencore-lib/node_modules/create-ecdh",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -30105,9 +30144,19 @@ module.exports={
     "jshint": "^2.6.0",
     "mocha": "^2.1.0"
   },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-BsXLz5sqX8OHcsh7CqBMztyXARmGQ3LWPtGjJi6DiJHq5C/qvi9P3OqgswKSDftbu8+IoI/QDTAm2fFnQ9SZSQ==",
+    "shasum": "c2d0b7776911b86722c632c3c06c60f2f819939a",
+    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz",
+    "fileCount": 17,
+    "unpackedSize": 118371,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJba7vUCRA9TVsSAnZWagAA+gcP/jWaj5GmDZ0YFi/X4g5O\nx+pxu9i3HbP9YqywT7rz3XFXSaytu0LQDeDEbddl523X69tsbKfzHRTcnW8n\n2r0VjPhttRm+0RpEhBwjSIK34VkQA1xIWh2ugOToKXVCFVLM5VFDPGzbiN6x\n/hpL7gj1hoCRVmuhjnqFQ+vPKACKfv1Eq4CsRmu2focmP37kQpWQlweD/z4V\nJF4NxA33Fvp13Fl+9g4sPHyhUVsW9ojVaG3Ijn70pCaGQM18UPlbODkWQ1QX\nAgteOFjkIOtcalJk3B3qsM8GZeHEcAFvt2T73miJkHdCGNmRQS45Ede+gnj0\nlLlZJsCCKUHtTqrlprHo6AgMnBZufmytyozYAHC1/JYniazSBi2yPHtQeniR\nl69BfiRBdD2rNrMPwmCNRkMqrgel5WMGpaD0xdaFAHF1Ru2ZQFKsA7KvPGgp\nA20+LN11cCib67Pg5XDyrZ92T3yXec+6gQ3iq9d9UBZKFGl0P8ebVqq1LrUJ\na6nekwMpRISWnKcqV72XVmQdBmUWHq9VfVLsWJzVIJqtpHmUO7q74ACP3i4W\n0/F1REeI0YEhh3NjeStdDecfjlu7PY0pLQpbk2I3ms+6DO+cAfeDEev5jFBK\nwQabRNhITeT1FVtxZAcApj33fnCdqwaWr1NS00K5ZRqhDTTzPr/O4KRN4CR1\npstU\r\n=UVBB\r\n-----END PGP SIGNATURE-----\r\n"
+  },
   "files": [
     "lib"
   ],
+  "gitHead": "523da1cf71ddcfd607fbdee1858bc2af47f0e700",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
     "EC",
@@ -30117,6 +30166,12 @@ module.exports={
   ],
   "license": "MIT",
   "main": "lib/elliptic.js",
+  "maintainers": [
+    {
+      "name": "indutny",
+      "email": "fedor@indutny.com"
+    }
+  ],
   "name": "elliptic",
   "repository": {
     "type": "git",
@@ -34005,45 +34060,32 @@ utils.getJSF = getJSF;
 
 },{}],174:[function(require,module,exports){
 module.exports={
-  "_from": "elliptic@=3.0.3",
-  "_id": "elliptic@3.0.3",
-  "_inBundle": false,
-  "_integrity": "sha1-hlybQgv75VAGuflp+XoNLESWZZU=",
-  "_location": "/elliptic",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "elliptic@=3.0.3",
-    "name": "elliptic",
-    "escapedName": "elliptic",
-    "rawSpec": "=3.0.3",
-    "saveSpec": null,
-    "fetchSpec": "=3.0.3"
+  "name": "elliptic",
+  "version": "3.0.3",
+  "description": "EC cryptography",
+  "main": "lib/elliptic.js",
+  "scripts": {
+    "test": "make lint && mocha --reporter=spec test/*-test.js"
   },
-  "_requiredBy": [
-    "/"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/indutny/elliptic.git"
+  },
+  "keywords": [
+    "EC",
+    "Elliptic",
+    "curve",
+    "Cryptography"
   ],
-  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
-  "_shasum": "865c9b420bfbe55006b9f969f97a0d2c44966595",
-  "_spec": "elliptic@=3.0.3",
-  "_where": "/Users/cfox/rdk/ravencore-lib",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
   },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/indutny/elliptic/issues"
   },
-  "bundleDependencies": false,
-  "dependencies": {
-    "bn.js": "^2.0.0",
-    "brorand": "^1.0.1",
-    "hash.js": "^1.0.0",
-    "inherits": "^2.0.1"
-  },
-  "deprecated": false,
-  "description": "EC cryptography",
+  "homepage": "https://github.com/indutny/elliptic",
   "devDependencies": {
     "browserify": "^3.44.2",
     "jscs": "^1.11.3",
@@ -34051,24 +34093,35 @@ module.exports={
     "mocha": "^2.1.0",
     "uglify-js": "^2.4.13"
   },
-  "homepage": "https://github.com/indutny/elliptic",
-  "keywords": [
-    "EC",
-    "Elliptic",
-    "curve",
-    "Cryptography"
+  "dependencies": {
+    "bn.js": "^2.0.0",
+    "brorand": "^1.0.1",
+    "hash.js": "^1.0.0",
+    "inherits": "^2.0.1"
+  },
+  "gitHead": "c8d7cf551fdf2ce3ecc5264b29084244ae6aa2b2",
+  "_id": "elliptic@3.0.3",
+  "_shasum": "865c9b420bfbe55006b9f969f97a0d2c44966595",
+  "_from": "elliptic@3.0.3",
+  "_npmVersion": "2.5.1",
+  "_nodeVersion": "1.3.0",
+  "_npmUser": {
+    "name": "indutny",
+    "email": "fedor@indutny.com"
+  },
+  "maintainers": [
+    {
+      "name": "indutny",
+      "email": "fedor@indutny.com"
+    }
   ],
-  "license": "MIT",
-  "main": "lib/elliptic.js",
-  "name": "elliptic",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/indutny/elliptic.git"
+  "dist": {
+    "shasum": "865c9b420bfbe55006b9f969f97a0d2c44966595",
+    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz"
   },
-  "scripts": {
-    "test": "make lint && mocha --reporter=spec test/*-test.js"
-  },
-  "version": "3.0.3"
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
+  "readme": "ERROR: No README data found!"
 }
 
 },{}],175:[function(require,module,exports){
@@ -57266,7 +57319,6 @@ module.exports={
     "request": "browser-request"
   },
   "dependencies": {
-    "@ravendevkit/node-x16r": "^1.0.2",
     "bn.js": "=2.0.4",
     "browser-request": "^0.3.3",
     "bs58": "=2.0.0",
@@ -57275,6 +57327,9 @@ module.exports={
     "inherits": "=2.0.1",
     "lodash": "^3.10.1",
     "xmlhttprequest": "^1.8.0"
+  },
+  "optionalDependencies": {
+    "@ravendevkit/node-x16r": "^1.0.2"
   },
   "devDependencies": {
     "brfs": "^1.2.0",
@@ -57367,12 +57422,10 @@ ravencore.deps.bnjs = require('bn.js');
 ravencore.deps.bs58 = require('bs58');
 ravencore.deps.Buffer = Buffer;
 ravencore.deps.elliptic = require('elliptic');
-// this may be undefined -- no x16r available to browser bundle
-ravencore.deps.nodeX16r = require('@ravendevkit/node-x16r');
 ravencore.deps._ = require('lodash');
 
 // Internal usage, exposed for testing/advanced tweaking
 ravencore.Transaction.sighash = require('./lib/transaction/sighash');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"./lib/address":1,"./lib/asset":2,"./lib/block":5,"./lib/block/blockheader":4,"./lib/block/merkleblock":6,"./lib/crypto/bn":7,"./lib/crypto/ecdsa":8,"./lib/crypto/hash":9,"./lib/crypto/point":10,"./lib/crypto/random":11,"./lib/crypto/signature":12,"./lib/encoding/base58":13,"./lib/encoding/base58check":14,"./lib/encoding/bufferreader":15,"./lib/encoding/bufferwriter":16,"./lib/encoding/varint":17,"./lib/errors":18,"./lib/hdprivatekey.js":20,"./lib/hdpublickey.js":21,"./lib/insight":22,"./lib/networks":23,"./lib/opcode":24,"./lib/privatekey":25,"./lib/publickey":26,"./lib/script":27,"./lib/transaction":30,"./lib/transaction/sighash":38,"./lib/unit":43,"./lib/uri":44,"./lib/util/buffer":45,"./lib/util/js":46,"./lib/util/preconditions":47,"./package.json":268,"@ravendevkit/node-x16r":48,"bn.js":69,"bs58":120,"buffer":123,"elliptic":161,"lodash":198,"xmlhttprequest":266}]},{},[]);
+},{"./lib/address":1,"./lib/asset":2,"./lib/block":5,"./lib/block/blockheader":4,"./lib/block/merkleblock":6,"./lib/crypto/bn":7,"./lib/crypto/ecdsa":8,"./lib/crypto/hash":9,"./lib/crypto/point":10,"./lib/crypto/random":11,"./lib/crypto/signature":12,"./lib/encoding/base58":13,"./lib/encoding/base58check":14,"./lib/encoding/bufferreader":15,"./lib/encoding/bufferwriter":16,"./lib/encoding/varint":17,"./lib/errors":18,"./lib/hdprivatekey.js":20,"./lib/hdpublickey.js":21,"./lib/insight":22,"./lib/networks":23,"./lib/opcode":24,"./lib/privatekey":25,"./lib/publickey":26,"./lib/script":27,"./lib/transaction":30,"./lib/transaction/sighash":38,"./lib/unit":43,"./lib/uri":44,"./lib/util/buffer":45,"./lib/util/js":46,"./lib/util/preconditions":47,"./package.json":268,"bn.js":69,"bs58":120,"buffer":123,"elliptic":161,"lodash":198,"xmlhttprequest":266}]},{},[]);
