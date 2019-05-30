@@ -512,12 +512,10 @@ var _ = require('lodash');
 var $ = require('./util/preconditions');
 var errors = require('./errors');
 var BufferReader = require('./encoding/bufferreader');
-var BufferWriter = require('./encoding/bufferwriter');
 var BufferUtil = require('./util/buffer');
 var buffer = require('buffer');
 var JSUtil = require('./util/js');
 var Base58 = require('./encoding/base58')
-var BN = require('./crypto/bn');
 
 /**
  * Instantiate an asset from a RVNX hex String or Buffer, or a map of properties.
@@ -535,8 +533,6 @@ function Asset(from) {
   var info;
   if (BufferUtil.isBuffer(from)) {
     info = Asset._fromBuffer(from);
-  } else if (from instanceof Asset) {
-    info = Asset._fromBuffer(from.toBuffer());
   } else if (typeof from === 'string') {
     info = Asset._fromHex(from);
   } else if (typeof from === 'object') {
@@ -605,33 +601,9 @@ Asset._fromHex = function(str) {
   return Asset._fromBuffer(new buffer.Buffer(str, 'hex'));
 };
 
-Asset.prototype.toBuffer = function() {
-  var bw = new BufferWriter();
-
-  if (this.type == Asset.assetTypes.ISSUE) {
-    bw.write(Asset.scriptMarkers.ISSUE);
-    throw new Error("TODO: Implement serialization for ISSUE.")
-  } else if (this.type == Asset.assetTypes.REISSUE) {
-    bw.write(Asset.scriptMarkers.REISSUE);
-    throw new Error("TODO: Implement serialization for REISSUE.")
-  } else if (this.type == Asset.assetTypes.TRANSFER) {
-    bw.write(Asset.scriptMarkers.TRANSFER);
-    var nameBuffer = new buffer.Buffer(this.name, 'ascii');
-    bw.writeVarintNum(nameBuffer.length);
-    bw.write(nameBuffer);
-    bw.writeUInt64LEBN(new BN(this.amount));
-  }
-
-  return bw.concat();
-};
-
-Asset.prototype.toHex = function () {
-  return this.toBuffer().toString('hex');
-};
-
 module.exports = Asset;
 }).call(this,require("buffer").Buffer)
-},{"./crypto/bn":7,"./encoding/base58":13,"./encoding/bufferreader":15,"./encoding/bufferwriter":16,"./errors":18,"./util/buffer":45,"./util/js":46,"./util/preconditions":47,"buffer":288,"lodash":146}],3:[function(require,module,exports){
+},{"./encoding/base58":13,"./encoding/bufferreader":15,"./errors":18,"./util/buffer":45,"./util/js":46,"./util/preconditions":47,"buffer":288,"lodash":146}],3:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -8367,17 +8339,6 @@ Script.buildPublicKeyHashOut = function(to) {
   s._network = to.network;
   return s;
 };
-
-Script.prototype.assetOut = function(asset) {
-  $.checkArgument(asset instanceof Asset);
-  if (asset instanceof Asset) {
-    asset = new Asset(asset);
-  }
-  this.add(Opcode.OP_RVN_ASSET)
-    .add(asset.toBuffer())
-    .add(Opcode.OP_DROP);
-  return this;
-}
 
 /**
  * @returns {Script} a new pay to public key output for the given
