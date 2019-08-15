@@ -111,3 +111,58 @@ var transaction = new ravencore.Transaction()
     .to('mtoKs9V381UAhUia3d7Vb9GNak8Qvmcsme', 20000)
     .sign(privateKeys);
 ```
+
+## Create an asset transfer
+```javascript
+
+var params = {
+  'insight_url': 'https://api.testnet.ravencoin.org/api',
+  'asset': 'HELLO_WORLD',
+  'amount': 4200000000,
+  'asset_from_addresses': 'mgyHoXRvAPk2rf28wDFQu2B2w66Vvvw65Z',
+  'rvn_from_address': 'mqjLshMbLdvjGTvWwzVASFyoLpRzQXHXYc',
+  'private_keys': ['cNyujqWV5ike5QipxEE771XwNs2CUDcE4iSvECy6RYZzAcLExUgy', 'cVjMjndmrXaAPk4BKPgu1MgqebUuaSERNbBLdxycqpNGG8Tfznz5'],
+  'to_address': 'mmamBGYSm4fAJcVfLp1BCRk83Ey9UuUMgu',
+  'asset_change_address': 'myGMuarr8TtPmkNxrckvPvjVDfTiWqbZWw',
+  'rvn_change_address': 'n1xJxVeCz2gdJuzF5auCufDJ7kkGLHNCSY'
+}
+
+var insight = new ravencore.Insight(params.insight_url)
+
+var getAssetUtxos = function (from_address, asset) {
+  return new Promise(function (resolve, reject) {
+    insight.addrAssetUtxo(from_address, asset, function (res) { resolve(res) })
+  })
+}
+
+var getRvnUtxos = function (from_address) {
+  return new Promise(function (resolve, reject) {
+    insight.passthroughGet('/addr/' + from_address + '/utxo', function (res) { resolve(res) })
+  })
+}
+
+var createTransaction = function (utxos) {
+  return new Promise(function (resolve, reject) {
+    t = new ravencore.Transaction()
+      .from(utxos)
+      .to(params.to_address, params.amount, params.asset)
+      .change(params.rvn_change_address)
+      .change(params.asset_change_address, params.asset)
+      .sign(params.private_keys)
+    resolve(t)
+  })
+}
+
+var transaction
+
+Promise.all([
+  getAssetUtxos(params.asset_from_addresses, params.asset),
+  getRvnUtxos(params.rvn_from_address)
+]).then(function (results) {
+  return _.flatten(results)
+}).then(function (utxos) {
+  return createTransaction(utxos)
+}).then(function (t) {
+  transaction = t
+})
+```
