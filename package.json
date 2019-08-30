@@ -48,7 +48,8 @@
     "elliptic": "=3.0.3",
     "inherits": "=2.0.1",
     "lodash": "^3.10.1",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "^1.8.0",
+    "node-x16rv2": "traysi/x16rv2_hash"
   },
   "optionalDependencies": {
     "@ravendevkit/node-x16r": "^1.0.2"
