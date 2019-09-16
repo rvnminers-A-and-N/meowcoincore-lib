@@ -137,7 +137,7 @@ describe('Hash', function() {
   });
   if (Hash.X16R_SUPPORTED) {
     describe('#x16r', function() {
-      
+
       it('calculates x16r hash correctly', function() {
         var headers = [ "00000020bd262b09846f3b30aeb33bea9c5acc3fece16c510163d27da99064aae200000014b58065de1463df1f23ce19a950adddd6a7456b6913bd9eb021a59958e9c9cf884e4d5affff001e050b0000", "00000020d38f4b32bafab48bd602e03245cadeeb09486c8809ed6ca484dee3023a000000b7a1afe300841252cc068c31e8cfadd00e50e5a9faf970ca84a8da5ae7100401994e4d5affff001e268a0500", "000000202a29a5aaabb793bd12d2858ffd35d96e162ae614264d6e36c4733b5f2a00000079dedf9b185692dcaa84efa8674c94a69389445635db278fcd52dfd04f9a1e13a04e4d5affff001ef9210200" ];
         var hashes = [ "0000003a02e3de84a46ced09886c4809ebdeca4532e002d68bb4faba324b8fd3" , "0000002a5f3b73c4366e4d2614e62a166ed935fd8f85d212bd93b7abaaa5292a", "000000a123ae742de194b6db9f3768e2a1dcd43470912d4524aa79d80a1ffd1b" ];
@@ -150,5 +150,18 @@ describe('Hash', function() {
 
     });
   }
+
+  describe('#x16rv2', function() {
+  it('calculates x16rv2 hash correctly', function() {
+    var headers = [ "00000020bd262b09846f3b30aeb33bea9c5acc3fece16c510163d27da99064aae200000014b58065de1463df1f23ce19a950adddd6a7456b6913bd9eb021a59958e9c9cf884e4d5affff001e050b0000", "00000020d38f4b32bafab48bd602e03245cadeeb09486c8809ed6ca484dee3023a000000b7a1afe300841252cc068c31e8cfadd00e50e5a9faf970ca84a8da5ae7100401994e4d5affff001e268a0500", "000000202a29a5aaabb793bd12d2858ffd35d96e162ae614264d6e36c4733b5f2a00000079dedf9b185692dcaa84efa8674c94a69389445635db278fcd52dfd04f9a1e13a04e4d5affff001ef9210200" ];
+    var hashes = [ "455ed0ae063dd8b8696637c760807ad1384c6d957d62f47be83d4a94834904b1" , "c8b72b1c4cf9a828ba9723e8cb76822be3595fe8efc56440ce213f3cd87d2ce6", "000000a123ae742de194b6db9f3768e2a1dcd43470912d4524aa79d80a1ffd1b" ];
+
+    headers.forEach(function(header, i) {
+      var data = new Buffer(header, 'hex');
+      Hash.x16rv2(data).toString('hex').should.equal(hashes[i]);
+    });
+  });
+
+});
 
 });
