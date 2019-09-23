@@ -44,10 +44,6 @@ describe('BlockHeader', function() {
     }).should.throw('Unrecognized argument for BlockHeader');
   });
 
-  // Skipping remaining tests as they all go through x16r which isn't supported in the browser.
-  // TODO: Some functionality could be modified/elided to give partial support when hashing isn't available.
-  if (Hash.X16R_SUPPORTED) {
-
   describe('#constructor', function() {
 
     it('should set all the variables', function() {
@@ -302,8 +298,5 @@ describe('BlockHeader', function() {
       var blockHeader = BlockHeader.fromRawBlock(dataRawBlockBuffer);
       blockHeader.id.should.equal(blockHeader.id);
   });
-
-  // if (Hash.X16R_SUPPORTED)
-  }
 
 });
