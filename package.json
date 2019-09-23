@@ -1,6 +1,6 @@
 {
-  "name": "@ravendevkit/ravencore-lib",
-  "version": "1.0.4",
+  "name": "ravencore-lib",
+  "version": "1.0.5",
   "description": "A pure and powerful JavaScript Ravencoin library.",
   "author": "Under",
   "main": "index.js",
@@ -14,6 +14,14 @@
   "contributors": [
     {
       "name": "Under",
+      "email": ""
+    },
+    {
+      "name": "Blondfrogs",
+      "email": ""
+    },
+    {
+      "name": "Traysi",
       "email": ""
     }
   ],
@@ -41,18 +49,14 @@
     "request": "browser-request"
   },
   "dependencies": {
-    "bn.js": "=2.0.4",
-    "browser-request": "^0.3.3",
-    "bs58": "=2.0.0",
-    "buffer-compare": "=1.0.0",
-    "elliptic": "=3.0.3",
-    "inherits": "=2.0.1",
-    "lodash": "^3.10.1",
-    "xmlhttprequest": "^1.8.0",
-    "node-x16rv2": "traysi/x16rv2_hash"
-  },
-  "optionalDependencies": {
-    "@ravendevkit/node-x16r": "^1.0.2"
+    "bn.js": "2.0.4",
+    "bs58": "2.0.0",
+    "buffer-compare": "1.0.0",
+    "elliptic": "3.0.3",
+    "inherits": "2.0.1",
+    "lodash": "3.10.1",
+    "node-x16r": "RavenDevKit/node-x16r",
+    "node-x16rv2": "RavenDevKit/node-x16rv2"
   },
   "devDependencies": {
     "brfs": "^1.2.0",
