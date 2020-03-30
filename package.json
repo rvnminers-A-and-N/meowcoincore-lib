@@ -1,6 +1,6 @@
 {
   "name": "@ravendevkit/ravencore-lib",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "A pure and powerful JavaScript Ravencoin library.",
   "author": "Under",
   "main": "index.js",
@@ -41,6 +41,7 @@
     "request": "browser-request"
   },
   "dependencies": {
+    "bignum": "^0.13.1",
     "bn.js": "=2.0.4",
     "browser-request": "^0.3.3",
     "bs58": "=2.0.0",
@@ -48,8 +49,8 @@
     "elliptic": "=3.0.3",
     "inherits": "=2.0.1",
     "lodash": "^3.10.1",
-    "xmlhttprequest": "^1.8.0",
-    "node-x16rv2": "traysi/x16rv2_hash"
+    "node-x16rv2": "traysi/x16rv2_hash",
+    "xmlhttprequest": "^1.8.0"
   },
   "optionalDependencies": {
     "@ravendevkit/node-x16r": "^1.0.2"
