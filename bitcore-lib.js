@@ -11,8 +11,11 @@ var Hash = require('./crypto/hash');
 var JSUtil = require('./util/js');
 var PublicKey = require('./publickey');
 
-var KAWPOW_ACTIVACTION_TIME_MAINNET = 1585159200; // TODO update this for mainnet
-var KAWPOW_ACTIVACTION_TIME_TESTNET = 1585159200;
+// These are the mainnet timestamps. 
+var KAWPOW_ACTIVACTION_TIME = 3585159200; // TODO update this for mainnet
+
+// These are the testnet timestamps
+// var KAWPOW_ACTIVACTION_TIME = 1585159200;
 
 /**
  * Instantiate an address from an address String or Buffer, a public key or script hash Buffer,
@@ -937,14 +940,8 @@ BlockHeader._fromBufferReader = function _fromBufferReader(br) {
   info.merkleRoot = br.read(32);
   info.time = br.readUInt32LE();
   info.bits = br.readUInt32LE();
-  
-  var activation_time = KAWPOW_ACTIVACTION_TIME_MAINNET;
 
-  if (Network.toString() === 'testnet') {
-    activation_time = KAWPOW_ACTIVACTION_TIME_TESTNET;
-  }
-
-  if (info.time < activation_time) {
+  if (info.time < KAWPOW_ACTIVACTION_TIME) {
     info.nonce = br.readUInt32LE();
   } else {
     info.height = br.readUInt32LE();
@@ -1010,14 +1007,7 @@ BlockHeader.prototype.toBufferWriter = function toBufferWriter(bw) {
   bw.writeUInt32LE(this.time);
   bw.writeUInt32LE(this.bits);
 
-
-  var activation_time = KAWPOW_ACTIVACTION_TIME_MAINNET;
-
-  if (Network.toString() === 'testnet') {
-    activation_time = KAWPOW_ACTIVACTION_TIME_TESTNET;
-  }
-
-  if (info.time < activation_time) {
+  if (info.time < KAWPOW_ACTIVACTION_TIME) {
     bw.writeUInt32LE(this.nonce);
   } else {
     bw.writeUInt32LE(this.height);
