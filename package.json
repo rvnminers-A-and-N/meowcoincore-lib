@@ -1,5 +1,5 @@
 {
-  "name": "@ravendevkit/ravencore-lib",
+  "name": "ravencore-lib",
   "version": "1.0.6",
   "description": "A pure and powerful JavaScript Ravencoin library.",
   "author": "Under",
