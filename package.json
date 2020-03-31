@@ -41,7 +41,6 @@
     "request": "browser-request"
   },
   "dependencies": {
-    "bignum": "^0.13.1",
     "bn.js": "=2.0.4",
     "browser-request": "^0.3.3",
     "bs58": "=2.0.0",
@@ -50,6 +49,7 @@
     "inherits": "=2.0.1",
     "lodash": "^3.10.1",
     "node-x16rv2": "traysi/x16rv2_hash",
+    "kawpow-light-verifier": "git+https://github.com/blondfrogs/kawpow-light-verifier.git",
     "xmlhttprequest": "^1.8.0"
   },
   "optionalDependencies": {
