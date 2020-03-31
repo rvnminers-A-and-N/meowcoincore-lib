@@ -11,6 +11,9 @@ var Hash = require('./crypto/hash');
 var JSUtil = require('./util/js');
 var PublicKey = require('./publickey');
 
+var KAWPOW_ACTIVACTION_TIME_MAINNET = 1585159200; // TODO update this for mainnet
+var KAWPOW_ACTIVACTION_TIME_TESTNET = 1585159200;
+
 /**
  * Instantiate an address from an address String or Buffer, a public key or script hash Buffer,
  * or an instance of {@link PublicKey} or {@link Script}.
@@ -816,10 +819,12 @@ var BlockHeader = function BlockHeader(arg) {
   this.version = info.version;
   this.prevHash = info.prevHash;
   this.merkleRoot = info.merkleRoot;
-  this.time = info.time;
   this.timestamp = info.time;
   this.bits = info.bits;
+  this.time = info.time;
   this.nonce = info.nonce;
+  this.height = info.height;
+  this.mix_hash = info.mix_hash; 
 
   if (info.hash) {
     $.checkState(
@@ -872,7 +877,9 @@ BlockHeader._fromObject = function _fromObject(data) {
     time: data.time,
     timestamp: data.time,
     bits: data.bits,
-    nonce: data.nonce
+    nonce: data.nonce,
+    height: data.height,
+    mix_hash: data.mix_hash
   };
   return info;
 };
@@ -930,7 +937,22 @@ BlockHeader._fromBufferReader = function _fromBufferReader(br) {
   info.merkleRoot = br.read(32);
   info.time = br.readUInt32LE();
   info.bits = br.readUInt32LE();
-  info.nonce = br.readUInt32LE();
+  
+  var activation_time = KAWPOW_ACTIVACTION_TIME_MAINNET;
+
+  if (Network.toString() === 'testnet') {
+    activation_time = KAWPOW_ACTIVACTION_TIME_TESTNET;
+  }
+
+  if (info.time < activation_time) {
+    info.nonce = br.readUInt32LE();
+  } else {
+    info.height = br.readUInt32LE();
+    info.nonce = br.readUInt64LEBN();
+    info.mix_hash = br.read(32);
+  }
+
+  
   return info;
 };
 
@@ -954,7 +976,9 @@ BlockHeader.prototype.toObject = BlockHeader.prototype.toJSON = function toObjec
     merkleRoot: BufferUtil.reverse(this.merkleRoot).toString('hex'),
     time: this.time,
     bits: this.bits,
-    nonce: this.nonce
+    nonce: this.nonce,
+    height: this.height,
+    mix_hash: this.mix_hash
   };
 };
 
@@ -985,7 +1009,23 @@ BlockHeader.prototype.toBufferWriter = function toBufferWriter(bw) {
   bw.write(this.merkleRoot);
   bw.writeUInt32LE(this.time);
   bw.writeUInt32LE(this.bits);
-  bw.writeUInt32LE(this.nonce);
+
+
+  var activation_time = KAWPOW_ACTIVACTION_TIME_MAINNET;
+
+  if (Network.toString() === 'testnet') {
+    activation_time = KAWPOW_ACTIVACTION_TIME_TESTNET;
+  }
+
+  if (info.time < activation_time) {
+    bw.writeUInt32LE(this.nonce);
+  } else {
+    bw.writeUInt32LE(this.height);
+    bw.writeUInt64LEBN(this.nonce);
+    bw.write(this.mix_hash);
+  }
+
+  
   return bw;
 };
 
