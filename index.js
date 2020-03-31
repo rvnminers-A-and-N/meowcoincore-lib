@@ -4,15 +4,15 @@ var ravencore = module.exports;
 
 // module information
 ravencore.version = 'v' + require('./package.json').version;
-ravencore.versionGuard = function(version) {
-  if (version !== undefined) {
-    var message = 'More than one instance of ravencore-lib found. ' +
+ravencore.versionGuard = function(global_version, check_version) {
+  if (global_version !== undefined && global_version !== check_version) {
+    var message = 'More than one version of ravencore-lib found. ' +
       'Please make sure to require ravencore-lib and check that submodules do' +
-      ' not also include their own ravencore-lib dependency.';
+      ' not also include their own ravencore-lib versions.';
     throw new Error(message);
   }
 };
-ravencore.versionGuard(global._ravencore);
+ravencore.versionGuard(global._ravencore, ravencore.version);
 global._ravencore = ravencore.version;
 
 // crypto
@@ -78,6 +78,7 @@ ravencore.deps.Buffer = Buffer;
 ravencore.deps.elliptic = require('elliptic');
 ravencore.deps._ = require('lodash');
 ravencore.deps.nodeX16rV2 = require('node-x16rv2');
+ravencore.deps.nodeX16r = require('node-x16r');
 
 // Internal usage, exposed for testing/advanced tweaking
 ravencore.Transaction.sighash = require('./lib/transaction/sighash');

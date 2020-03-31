@@ -1,6 +1,7 @@
 {
   "name": "ravencore-lib",
   "version": "1.0.6",
+
   "description": "A pure and powerful JavaScript Ravencoin library.",
   "author": "Under",
   "main": "index.js",
@@ -14,6 +15,14 @@
   "contributors": [
     {
       "name": "Under",
+      "email": ""
+    },
+    {
+      "name": "Blondfrogs",
+      "email": ""
+    },
+    {
+      "name": "Traysi",
       "email": ""
     }
   ],
@@ -41,7 +50,7 @@
     "request": "browser-request"
   },
   "dependencies": {
-    "bn.js": "=2.0.4",
+    "bn.js": "2.0.4",
     "browser-request": "^0.3.3",
     "bs58": "=2.0.0",
     "buffer-compare": "=1.0.0",
