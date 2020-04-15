@@ -12,7 +12,7 @@ var JSUtil = require('./util/js');
 var PublicKey = require('./publickey');
 
 // These are the mainnet timestamps. 
-var KAWPOW_ACTIVACTION_TIME = 3585159200; // TODO update this for mainnet
+var KAWPOW_ACTIVACTION_TIME = 1588788000;
 
 // These are the testnet timestamps
 // var KAWPOW_ACTIVACTION_TIME = 1585159200;
