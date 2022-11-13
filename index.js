@@ -41,7 +41,7 @@ meowcoincore.util.preconditions = require('./lib/util/preconditions');
 // errors thrown by the library
 meowcoincore.errors = require('./lib/errors');
 
-// main meowcoincoin library
+// main meowcoin library
 meowcoincore.Address = require('./lib/address');
 meowcoincore.Asset = require('./lib/asset');
 meowcoincore.Block = require('./lib/block');

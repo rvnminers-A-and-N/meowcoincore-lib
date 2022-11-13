@@ -40,7 +40,7 @@ var transaction = new meowcoincore.Transaction()
   .sign(privateKey);
 ```
 
-## Sign a meowcoincoin message
+## Sign a meowcoin message
 ```javascript
 var Message = require('meowcoincore-message');
 
@@ -50,7 +50,7 @@ var message = new Message('This is an example of a signed message.');
 var signature = message.sign(privateKey);
 ```
 
-## Verify a meowcoincoin message
+## Verify a meowcoin message
 ```javascript
 var Message = require('meowcoincore-message');
 
@@ -116,7 +116,7 @@ var transaction = new meowcoincore.Transaction()
 ```javascript
 
 var params = {
-  'insight_url': 'https://api.testnet.meowcoincoin.org/api',
+  'insight_url': 'https://api.testnet.meowcoin.org/api',
   'asset': 'HELLO_WORLD',
   'amount': 4200000000,
   'asset_from_addresses': 'mgyHoXRvAPk2rf28wDFQu2B2w66Vvvw65Z',

@@ -185,7 +185,7 @@ Address._classifyFromVersion = function(buffer) {
 };
 
 /**
- * Internal function to transform a meowcoincoin address buffer
+ * Internal function to transform a meowcoin address buffer
  *
  * @param {Buffer} buffer - An instance of a hex encoded address Buffer
  * @param {string=} network - The network: 'livenet' or 'testnet'
@@ -256,7 +256,7 @@ Address._transformScript = function(script, network) {
 /**
  * Creates a P2SH address from a set of public keys and a threshold.
  *
- * The addresses will be sorted lexicographically, as that is the trend in meowcoincoin.
+ * The addresses will be sorted lexicographically, as that is the trend in meowcoin.
  * To create an address from unsorted public keys, use the {@link Script#buildMultisigOut}
  * interface.
  *
@@ -271,7 +271,7 @@ Address.createMultisig = function(publicKeys, threshold, network) {
 };
 
 /**
- * Internal function to transform a meowcoincoin address string
+ * Internal function to transform a meowcoin address string
  *
  * @param {string} data
  * @param {String|Network=} network - either a Network instance, 'livenet', or 'testnet'
@@ -378,7 +378,7 @@ Address.fromBuffer = function(buffer, network, type) {
 /**
  * Instantiate an address from an address string
  *
- * @param {string} str - An string of the meowcoincoin address
+ * @param {string} str - An string of the meowcoin address
  * @param {String|Network=} network - either a Network instance, 'livenet', or 'testnet'
  * @param {string=} type - The type of address: 'script' or 'pubkey'
  * @returns {Address} A new valid and frozen instance of an Address
@@ -464,7 +464,7 @@ Address.prototype.isPayToScriptHash = function() {
 /**
  * Will return a buffer representation of the address
  *
- * @returns {Buffer} meowcoincoin address buffer
+ * @returns {Buffer} meowcoin address buffer
  */
 Address.prototype.toBuffer = function() {
   var version = new Buffer([this.network[this.type]]);
@@ -486,7 +486,7 @@ Address.prototype.toObject = Address.prototype.toJSON = function toObject() {
 /**
  * Will return a the string representation of the address
  *
- * @returns {string} meowcoincoin address
+ * @returns {string} meowcoin address
  */
 Address.prototype.toString = function() {
   return Base58Check.encode(this.toBuffer());
@@ -495,7 +495,7 @@ Address.prototype.toString = function() {
 /**
  * Will return a string formatted for the console
  *
- * @returns {string} meowcoincoin address
+ * @returns {string} meowcoin address
  */
 Address.prototype.inspect = function() {
   return '<Address: ' + this.toString() + ', type: ' + this.type + ', network: ' + this.network + '>';
@@ -1276,7 +1276,7 @@ MerkleBlock.prototype.validMerkleTree = function validMerkleTree() {
 
 /**
  * Traverse a the tree in this MerkleBlock, validating it along the way
- * Modeled after Meowcoincoin merkleblock.cpp TraverseAndExtract()
+ * Modeled after Meowcoin merkleblock.cpp TraverseAndExtract()
  * @param {Number} - depth - Current height
  * @param {Number} - pos - Current position in the tree
  * @param {Object} - opts - Object with values that need to be mutated throughout the traversal
@@ -1319,7 +1319,7 @@ MerkleBlock.prototype._traverseMerkleTree = function traverseMerkleTree(depth, p
 };
 
 /** Calculates the width of a merkle tree at a given height.
- *  Modeled after meowcoincoin Core merkleblock.h CalcTreeWidth()
+ *  Modeled after meowcoin Core merkleblock.h CalcTreeWidth()
  * @param {Number} - Height at which we want the tree width
  * @returns {Number} - Width of the tree at a given height
  * @private
@@ -3787,7 +3787,7 @@ HDPrivateKey.fromSeed = function(hexa, network) {
   if (hexa.length > MAXIMUM_ENTROPY_BITS * BITS_TO_BYTES) {
     throw new hdErrors.InvalidEntropyArgument.TooMuchEntropy(hexa);
   }
-  var hash = Hash.sha512hmac(hexa, new buffer.Buffer('Meowcoincoin seed'));
+  var hash = Hash.sha512hmac(hexa, new buffer.Buffer('Meowcoin seed'));
 
   return new HDPrivateKey({
     network: Network.get(network) || Network.defaultNetwork,
@@ -4527,7 +4527,7 @@ var networkMaps = {};
 
 /**
  * A network is merely a map containing values that correspond to version
- * numbers for each meowcoincoin network. Currently only supporting "livenet"
+ * numbers for each meowcoin network. Currently only supporting "livenet"
  * (a.k.a. "mainnet") and "testnet".
  * @constructor
  */
@@ -5853,7 +5853,7 @@ var Signature = require('../crypto/signature');
 var PublicKey = require('../publickey');
 
 /**
- * meowcoincoin transactions contain scripts. Each input has a script called the
+ * meowcoin transactions contain scripts. Each input has a script called the
  * scriptSig, and each output has a script called the scriptPubkey. To validate
  * an input, the input's script is concatenated with the referenced output script,
  * and the result is executed. If at the end of execution the stack contains a
@@ -6165,7 +6165,7 @@ Interpreter.prototype.evaluate = function() {
  * There are two times of nLockTime: lock-by-blockheight and lock-by-blocktime,
  * distinguished by whether nLockTime < LOCKTIME_THRESHOLD = 500000000
  *
- * See the corresponding code on Meowcoincoin:
+ * See the corresponding code on Meowcoin:
  * https://github.com/bitcoin/bitcoin/blob/ffd75adce01a78b3461b3ff05bcc2b530a9ce994/src/script/interpreter.cpp#L1129
  *
  * @param {BN} nLockTime the locktime read from the script
@@ -7128,7 +7128,7 @@ var BufferUtil = require('../util/buffer');
 var JSUtil = require('../util/js');
 
 /**
- * A meowcoincoin transaction script. Each transaction's inputs and outputs
+ * A meowcoin transaction script. Each transaction's inputs and outputs
  * has a script that is evaluated to validate it's spending.
  *
  * See https://en.bitcoin.it/wiki/Script
@@ -9527,7 +9527,7 @@ Transaction.prototype._getHash = function() {
  * * `disableLargeFees`: disable checking for fees that are too large
  * * `disableIsFullySigned`: disable checking if all inputs are fully signed
  * * `disableDustOutputs`: disable checking if there are no outputs that are dust amounts
- * * `disableMoreOutputThanInput`: disable checking if the transaction spends more meowcoincoins than the sum of the input amounts
+ * * `disableMoreOutputThanInput`: disable checking if the transaction spends more meowcoins than the sum of the input amounts
  * @return {string}
  */
 Transaction.prototype.serialize = function(unsafe) {
@@ -10515,7 +10515,7 @@ Transaction.prototype.verifySignature = function(sig, pubkey, nin, subscript) {
 /**
  * Check that a transaction passes basic sanity tests. If not, return a string
  * describing the error. This function contains the same logic as
- * CheckTransaction in Meowcoincoin.
+ * CheckTransaction in Meowcoin.
  */
 Transaction.prototype.verify = function() {
   // Basic checks that don't depend on any context
@@ -10640,7 +10640,7 @@ var Unit = require('../unit');
  * @param {number=} data.outputIndex alias for `vout`
  * @param {string|Script} data.scriptPubKey the script that must be resolved to release the funds
  * @param {string|Script=} data.script alias for `scriptPubKey`
- * @param {number} data.amount amount of meowcoincoins associated
+ * @param {number} data.amount amount of meowcoins associated
  * @param {number=} data.satoshis alias for `amount`, but expressed in satoshis (1 BTC = 1e8 satoshis)
  * @param {string|Address=} data.address the associated address to the script, if provided
  */
@@ -10736,7 +10736,7 @@ var UNITS = {
 };
 
 /**
- * Utility for handling and converting meowcoincoins units. The supported units are
+ * Utility for handling and converting meowcoins units. The supported units are
  * BTC, mBTC, bits (also named uBTC) and satoshis. A unit instance can be created with an
  * amount and a unit code, or alternatively using static methods like {fromBTC}.
  * It also allows to be created from a fiat amount and the exchange rate, or
@@ -10971,8 +10971,8 @@ var Unit = require('./unit');
 /**
  * meowcoincore URI
  *
- * Instantiate an URI from a meowcoincoin URI String or an Object. An URI instance
- * can be created with a meowcoincoin uri string or an object. All instances of
+ * Instantiate an URI from a meowcoin URI String or an Object. An URI instance
+ * can be created with a meowcoin uri string or an object. All instances of
  * URI are valid, the static method isValid allows checking before instantiation.
  *
  * All standard parameters can be found as members of the class, the address
@@ -10982,13 +10982,13 @@ var Unit = require('./unit');
  * @example
  * ```javascript
  *
- * var uri = new URI('meowcoincoin:12A1MyfXbW6RhdRAZEqofac5jCQQjwEPBu?amount=1.2');
+ * var uri = new URI('meowcoin:12A1MyfXbW6RhdRAZEqofac5jCQQjwEPBu?amount=1.2');
  * console.log(uri.address, uri.amount);
  * ```
  *
- * @param {string|Object} data - A meowcoincoin URI string or an Object
+ * @param {string|Object} data - A meowcoin URI string or an Object
  * @param {Array.<string>=} knownParams - Required non-standard params
- * @throws {TypeError} Invalid meowcoincoin address
+ * @throws {TypeError} Invalid meowcoin address
  * @throws {TypeError} Invalid amount
  * @throws {Error} Unknown required argument
  * @returns {URI} A new valid and frozen instance of URI
@@ -11040,16 +11040,16 @@ URI.fromObject = function fromObject(json) {
 };
 
 /**
- * Check if an meowcoincoin URI string is valid
+ * Check if an meowcoin URI string is valid
  *
  * @example
  * ```javascript
  *
- * var valid = URI.isValid('meowcoincoin:12A1MyfXbW6RhdRAZEqofac5jCQQjwEPBu');
+ * var valid = URI.isValid('meowcoin:12A1MyfXbW6RhdRAZEqofac5jCQQjwEPBu');
  * // true
  * ```
  *
- * @param {string|Object} data - A meowcoincoin URI string or an Object
+ * @param {string|Object} data - A meowcoin URI string or an Object
  * @param {Array.<string>=} knownParams - Required non-standard params
  * @returns {boolean} Result of uri validation
  */
@@ -11063,17 +11063,17 @@ URI.isValid = function(arg, knownParams) {
 };
 
 /**
- * Convert a meowcoincoin URI string into a simple object.
+ * Convert a meowcoin URI string into a simple object.
  *
- * @param {string} uri - A meowcoincoin URI string
- * @throws {TypeError} Invalid meowcoincoin URI
+ * @param {string} uri - A meowcoin URI string
+ * @throws {TypeError} Invalid meowcoin URI
  * @returns {Object} An object with the parsed params
  */
 URI.parse = function(uri) {
   var info = URL.parse(uri, true);
 
-  if (info.protocol !== 'meowcoincoin:') {
-    throw new TypeError('Invalid meowcoincoin URI');
+  if (info.protocol !== 'meowcoin:') {
+    throw new TypeError('Invalid meowcoin URI');
   }
 
   // workaround to host insensitiveness
@@ -11089,7 +11089,7 @@ URI.Members = ['address', 'amount', 'message', 'label', 'r'];
  * Internal function to load the URI instance with an object.
  *
  * @param {Object} obj - Object with the information
- * @throws {TypeError} Invalid meowcoincoin address
+ * @throws {TypeError} Invalid meowcoin address
  * @throws {TypeError} Invalid amount
  * @throws {Error} Unknown required argument
  */
@@ -11097,7 +11097,7 @@ URI.prototype._fromObject = function(obj) {
   /* jshint maxcomplexity: 10 */
 
   if (!Address.isValid(obj.address)) {
-    throw new TypeError('Invalid meowcoincoin address');
+    throw new TypeError('Invalid meowcoin address');
   }
 
   this.address = new Address(obj.address);
@@ -11148,7 +11148,7 @@ URI.prototype.toObject = URI.prototype.toJSON = function toObject() {
 /**
  * Will return a the string representation of the URI
  *
- * @returns {string} meowcoincoin URI string
+ * @returns {string} meowcoin URI string
  */
 URI.prototype.toString = function() {
   var query = {};
@@ -11167,7 +11167,7 @@ URI.prototype.toString = function() {
   _.extend(query, this.extras);
 
   return URL.format({
-    protocol: 'meowcoincoin:',
+    protocol: 'meowcoin:',
     host: this.address,
     query: query
   });
@@ -11176,7 +11176,7 @@ URI.prototype.toString = function() {
 /**
  * Will return a string formatted for the console
  *
- * @returns {string} meowcoincoin URI
+ * @returns {string} meowcoin URI
  */
 URI.prototype.inspect = function() {
   return '<URI: ' + this.toString() + '>';
@@ -52174,7 +52174,7 @@ if (typeof Object.create === 'function') {
 module.exports={
   "name": "meowcoincore-lib",
   "version": "0.13.19",
-  "description": "A pure and powerful JavaScript meowcoincoin library.",
+  "description": "A pure and powerful JavaScript meowcoin library.",
   "author": "BitPay <dev@bitpay.com>",
   "main": "index.js",
   "scripts": {
@@ -52230,7 +52230,7 @@ module.exports={
     }
   ],
   "keywords": [
-    "meowcoincoin",
+    "meowcoin",
     "transaction",
     "address",
     "p2p",
@@ -52247,7 +52247,7 @@ module.exports={
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/MeowcoinDevKit/meowcoincore-lib.git"
+    "url": "https://github.com/rvnminers-A-and-N/meowcoincore-lib.git"
   },
   "browser": {
     "request": "browser-request"
@@ -52315,7 +52315,7 @@ meowcoincore.util.preconditions = require('./lib/util/preconditions');
 // errors thrown by the library
 meowcoincore.errors = require('./lib/errors');
 
-// main meowcoincoin library
+// main meowcoin library
 meowcoincore.Address = require('./lib/address');
 meowcoincore.Block = require('./lib/block');
 meowcoincore.MerkleBlock = require('./lib/block/merkleblock');

@@ -1,7 +1,7 @@
 Contributing to Meowcoincore
 =======
 
-We're working hard to make *meowcoincore* the most powerful JavaScript library for working with Meowcoincoin. Our goal is to have *meowcoincore* be a library that can be used by anyone interested in Meowcoincoin, and to level expertise differences with great design and documentation.
+We're working hard to make *meowcoincore* the most powerful JavaScript library for working with Meowcoin. Our goal is to have *meowcoincore* be a library that can be used by anyone interested in Meowcoin, and to level expertise differences with great design and documentation.
 
 ## Community
 
@@ -40,7 +40,7 @@ Write a test for all your code. We encourage Test Driven Development so we know 
 
 Interfaces should accept as many types of arguments as possible, so there's no mental tax on using them: we want to avoid questions such as "should I use a string here or a buffer?", "what happens if I'm not sure if the type of this variable is an Address instance or a string with it encoded in base-58?" or "what kind of object will I receive after calling this function?".
 
-Accept a wide variety of use cases and arguments, always return an internal form of an object. For example, the class `PublicKey` can accept strings or buffers with a DER encoded public key (either compressed or uncompressed), another PublicKey, a PrivateKey, or a Point, an instance of the `elliptic.js` library with the point in meowcoincoin's elliptic curve that represents the public key.
+Accept a wide variety of use cases and arguments, always return an internal form of an object. For example, the class `PublicKey` can accept strings or buffers with a DER encoded public key (either compressed or uncompressed), another PublicKey, a PrivateKey, or a Point, an instance of the `elliptic.js` library with the point in meowcoin's elliptic curve that represents the public key.
 
 ### D4 - Consistency Everywhere
 
@@ -258,11 +258,11 @@ git push origin your_branch_name
 git push origin feature/some-new-stuff
 git push origin fix/some-bug
 ```
-Finally go to [github.com/MeowcoinDevKit/meowcoincore](https://github.com/MeowcoinDevKit/meowcoincore) in your web browser and issue a new pull request.
+Finally go to [github.com/rvnminers-A-and-N/meowcoincore](https://github.com/rvnminers-A-and-N/meowcoincore) in your web browser and issue a new pull request.
 
 Main contributors will review your code and possibly ask for changes before your code is pulled in to the main repository.  We'll check that all tests pass, review the coding style, and check for general code correctness. If everything is OK, we'll merge your pull request and your code will be part of meowcoincore.
 
 If you have any questions feel free to post them to
-[github.com/MeowcoinDevKit/meowcoincore/issues](https://github.com/MeowcoinDevKit/meowcoincore/issues).
+[github.com/rvnminers-A-and-N/meowcoincore/issues](https://github.com/rvnminers-A-and-N/meowcoincore/issues).
 
 Thanks for your time and code!

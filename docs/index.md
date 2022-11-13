@@ -2,7 +2,7 @@
 
 ## Principles
 
-Meowcoincoin is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the meowcoincoin network allows for highly resilient meowcoincoin infrastructure, and the developer community needs reliable, open-source tools to implement meowcoincoin apps and services. Meowcoincore provides a reliable API for JavaScript apps that need to interface with meowcoincoin.
+Meowcoin is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the meowcoin network allows for highly resilient meowcoin infrastructure, and the developer community needs reliable, open-source tools to implement meowcoin apps and services. Meowcoincore provides a reliable API for JavaScript apps that need to interface with meowcoin.
 
 To get started, just `npm install meowcoincore` or `bower install meowcoincore`.
 
@@ -17,10 +17,10 @@ To get started, just `npm install meowcoincore` or `bower install meowcoincore`.
 
 ## Payment Handling
 * [Using Different Units](unit.md)
-* [Acknowledging and Requesting Payments: meowcoincoin URIs](uri.md)
+* [Acknowledging and Requesting Payments: meowcoin URIs](uri.md)
 * [The Transaction Class](transaction.md)
 
-## Meowcoincoin Internals
+## Meowcoin Internals
 * [Scripts](script.md)
 * [Block](block.md)
 
@@ -35,14 +35,14 @@ To get started, just `npm install meowcoincore` or `bower install meowcoincore`.
 
 Some functionality is implemented as a module that can be installed separately:
 
-* [Payment Protocol Support](https://github.com/MeowcoinDevKit/meowcoincore-payment-protocol)
-* [Peer to Peer Networking](https://github.com/MeowcoinDevKit/meowcoincore-p2p)
-* [Meowcoincoin Core JSON-RPC](https://github.com/MeowcoinDevKit/meowcoind-rpc)
-* [Payment Channels](https://github.com/MeowcoinDevKit/meowcoincore-channel)
-* [Mnemonics](https://github.com/MeowcoinDevKit/meowcoincore-mnemonic)
-* [Elliptical Curve Integrated Encryption Scheme](https://github.com/MeowcoinDevKit/meowcoincore-ecies)
-* [Blockchain Explorers](https://github.com/MeowcoinDevKit/meowcoincore-explorers)
-* [Signed Messages](https://github.com/MeowcoinDevKit/meowcoincore-message)
+* [Payment Protocol Support](https://github.com/rvnminers-A-and-N/meowcoincore-payment-protocol)
+* [Peer to Peer Networking](https://github.com/rvnminers-A-and-N/meowcoincore-p2p)
+* [Meowcoin Core JSON-RPC](https://github.com/rvnminers-A-and-N/meowcoind-rpc)
+* [Payment Channels](https://github.com/rvnminers-A-and-N/meowcoincore-channel)
+* [Mnemonics](https://github.com/rvnminers-A-and-N/meowcoincore-mnemonic)
+* [Elliptical Curve Integrated Encryption Scheme](https://github.com/rvnminers-A-and-N/meowcoincore-ecies)
+* [Blockchain Explorers](https://github.com/rvnminers-A-and-N/meowcoincore-explorers)
+* [Signed Messages](https://github.com/rvnminers-A-and-N/meowcoincore-message)
 
 # Examples
 

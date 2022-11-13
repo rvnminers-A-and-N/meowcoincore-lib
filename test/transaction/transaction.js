@@ -589,7 +589,7 @@ describe('Transaction', function() {
             .change(changeAddress);
         }, 'disableIsFullySigned', errors.Transaction.MissingSignatures
       ));
-      it('can skip the check that avoids spending more meowcoincoins than the inputs for a transaction', buildSkipTest(
+      it('can skip the check that avoids spending more meowcoins than the inputs for a transaction', buildSkipTest(
         function(transaction) {
           return transaction
             .to(toAddress, 10000000000000)
@@ -1340,8 +1340,8 @@ describe('Transaction', function() {
         var valid = signedTx.inputs[0].isValidSignature(signedTx, signedTx.inputs[0].signatures[0]);
         valid.should.equal(true);
       });
-      describe('Meowcoincoin tests', function() {
-        // from Meowcoincoin tests at src/test/transaction_tests.cpp
+      describe('Meowcoin tests', function() {
+        // from Meowcoin tests at src/test/transaction_tests.cpp
         it('will verify pay-to-compressed publickey (v0) part 1', function() {
           var check;
           var flags;

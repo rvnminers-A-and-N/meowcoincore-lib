@@ -1,8 +1,8 @@
-# Meowcoincoin Address
-Represents a meowcoincoin address. Addresses are the most popular way to make meowcoincoin transactions. See [the official Bitcoin Wiki](https://en.bitcoin.it/wiki/Address) for technical background information.
+# Meowcoin Address
+Represents a meowcoin address. Addresses are the most popular way to make meowcoin transactions. See [the official Bitcoin Wiki](https://en.bitcoin.it/wiki/Address) for technical background information.
 
 ## Instantiate an Address
-To be able to receive meowcoincoins an address is needed, but in order to spend them a private key is necessary. Please take a look at the [`PrivateKey`](privatekey.md) docs for more information about exporting and saving a key.  
+To be able to receive meowcoins an address is needed, but in order to spend them a private key is necessary. Please take a look at the [`PrivateKey`](privatekey.md) docs for more information about exporting and saving a key.  
 
 ```javascript
 var privateKey = new PrivateKey();
@@ -62,4 +62,4 @@ var error = Address.getValidationError(input, Networks.testnet);
 }
 ```
 
-The errors are listed in the generated file in the [errors folder](https://github.com/MeowcoinDevKit/meowcoincore/tree/master/lib/errors). There's a structure to errors defined in the [spec.js file](https://github.com/MeowcoinDevKit/meowcoincore/tree/master/lib/errors/spec.js).
+The errors are listed in the generated file in the [errors folder](https://github.com/rvnminers-A-and-N/meowcoincore/tree/master/lib/errors). There's a structure to errors defined in the [spec.js file](https://github.com/rvnminers-A-and-N/meowcoincore/tree/master/lib/errors/spec.js).

@@ -16,22 +16,22 @@ describe('URI', function() {
 
     URI.parse.bind(URI, 'badURI').should.throw(TypeError);
 
-    uri = URI.parse('meowcoincoin:');
+    uri = URI.parse('meowcoin:');
     expect(uri.address).to.be.undefined();
     expect(uri.amount).to.be.undefined();
     expect(uri.otherParam).to.be.undefined();
 
-    uri = URI.parse('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
+    uri = URI.parse('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
     uri.address.should.equal('R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
     expect(uri.amount).to.be.undefined();
     expect(uri.otherParam).to.be.undefined();
 
-    uri = URI.parse('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=123.22');
+    uri = URI.parse('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=123.22');
     uri.address.should.equal('R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
     uri.amount.should.equal('123.22');
     expect(uri.otherParam).to.be.undefined();
 
-    uri = URI.parse('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=123.22' +
+    uri = URI.parse('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=123.22' +
                     '&other-param=something&req-extra=param');
     uri.address.should.equal('R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
     uri.amount.should.equal('123.22');
@@ -41,24 +41,24 @@ describe('URI', function() {
 
   // TODO: Split this and explain tests
   it('URIs can be validated statically (test vector)', function() {
-    URI.isValid('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K').should.equal(true);
-    URI.isValid('meowcoincoin:moSNtynymW8y9Pe4veLGhSpBL8yw4t8JWs').should.equal(true);
+    URI.isValid('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K').should.equal(true);
+    URI.isValid('meowcoin:moSNtynymW8y9Pe4veLGhSpBL8yw4t8JWs').should.equal(true);
 
-    URI.isValid('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2')
+    URI.isValid('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2')
                 .should.equal(true);
-    URI.isValid('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&other=param')
+    URI.isValid('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&other=param')
                 .should.equal(true);
-    URI.isValid('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&req-other=param',
+    URI.isValid('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&req-other=param',
                 ['req-other']).should.equal(true);
-    URI.isValid('meowcoincoin:RDWmJMh9iBvwbvgohRCynzoyP3ojq8st63?amount=0.1&' +
+    URI.isValid('meowcoin:RDWmJMh9iBvwbvgohRCynzoyP3ojq8st63?amount=0.1&' +
                 'r=https%3A%2F%2Ftest.bitpay.com%2Fi%2F6DKgf8cnJC388irbXk5hHu').should.equal(true);
 
-    URI.isValid('meowcoincoin:').should.equal(false);
-    URI.isValid('meowcoincoin:badUri').should.equal(false);
-    URI.isValid('meowcoincoin:1DP69gMMvSuYhbnxsi4EJEFufUAbDrEQfk?amount=bad').should.equal(false);
-    URI.isValid('meowcoincoin:1DP69gMMvSuYhbnxsi4EJEFufUAbDrEQfk?amount=1.2&req-other=param')
+    URI.isValid('meowcoin:').should.equal(false);
+    URI.isValid('meowcoin:badUri').should.equal(false);
+    URI.isValid('meowcoin:1DP69gMMvSuYhbnxsi4EJEFufUAbDrEQfk?amount=bad').should.equal(false);
+    URI.isValid('meowcoin:1DP69gMMvSuYhbnxsi4EJEFufUAbDrEQfk?amount=1.2&req-other=param')
                 .should.equal(false);
-    URI.isValid('meowcoincoin:?r=https%3A%2F%2Ftest.bitpay.com%2Fi%2F6DKgf8cnJC388irbXk5hHu')
+    URI.isValid('meowcoin:?r=https%3A%2F%2Ftest.bitpay.com%2Fi%2F6DKgf8cnJC388irbXk5hHu')
                 .should.equal(false);
   });
 
@@ -69,35 +69,35 @@ describe('URI', function() {
   });
 
   it('do not need new keyword', function() {
-    var uri = URI('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
+    var uri = URI('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
     uri.should.be.instanceof(URI);
   });
 
-  describe('instantiation from meowcoincoin uri', function() {
+  describe('instantiation from meowcoin uri', function() {
     /* jshint maxstatements: 25 */
     var uri;
 
     it('parses address', function() {
-      uri = new URI('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
+      uri = new URI('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
       uri.address.should.be.instanceof(meowcoincore.Address);
       uri.network.should.equal(Networks.livenet);
     });
 
     it('parses amount', function() {
-      uri = URI.fromString('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=123.22');
+      uri = URI.fromString('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=123.22');
       uri.address.toString().should.equal('R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
       uri.amount.should.equal(12322000000);
       expect(uri.otherParam).to.be.undefined();
     });
 
     it('parses a testnet address', function() {
-      uri = new URI('meowcoincoin:mp5vhtKLjEB2BSJQ5GJ5e399jDDgWpFAmb');
+      uri = new URI('meowcoin:mp5vhtKLjEB2BSJQ5GJ5e399jDDgWpFAmb');
       uri.address.should.be.instanceof(meowcoincore.Address);
       uri.network.should.equal(Networks.testnet);
     });
 
     it('stores unknown parameters as "extras"', function() {
-      uri = new URI('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&other=param');
+      uri = new URI('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&other=param');
       uri.address.should.be.instanceof(meowcoincore.Address);
       expect(uri.other).to.be.undefined();
       uri.extras.other.should.equal('param');
@@ -105,12 +105,12 @@ describe('URI', function() {
 
     it('throws error when a required feature is not supported', function() {
       (function() {
-        return new URI('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&other=param&req-required=param');
+        return new URI('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&other=param&req-required=param');
       }).should.throw(Error);
     });
 
     it('has no false negative when checking supported features', function() {
-      uri = new URI('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&other=param&' +
+      uri = new URI('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.2&other=param&' +
                     'req-required=param', ['req-required']);
       uri.address.should.be.instanceof(meowcoincore.Address);
       uri.amount.should.equal(120000000);
@@ -166,12 +166,12 @@ describe('URI', function() {
   });
 
   it('should support double slash scheme', function() {
-    var uri = new URI('meowcoincoin://R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
+    var uri = new URI('meowcoin://R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
     uri.address.toString().should.equal('R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
   });
 
   it('should input/output String', function() {
-    var str = 'meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?' +
+    var str = 'meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?' +
               'message=Donation%20for%20project%20xyz&label=myLabel&other=xD';
     URI.fromString(str).toString().should.equal(str);
   });
@@ -187,12 +187,12 @@ describe('URI', function() {
   });
 
   it('should support numeric amounts', function() {
-    var uri = new URI('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=12.10001');
+    var uri = new URI('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=12.10001');
     expect(uri.amount).to.be.equal(1210001000);
   });
 
   it('should support extra arguments', function() {
-    var uri = new URI('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?' +
+    var uri = new URI('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?' +
                       'message=Donation%20for%20project%20xyz&label=myLabel&other=xD');
 
     should.exist(uri.message);
@@ -209,7 +209,7 @@ describe('URI', function() {
     new URI({
       address: 'R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K',
     }).toString().should.equal(
-      'meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K'
+      'meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K'
     );
 
     new URI({
@@ -218,27 +218,27 @@ describe('URI', function() {
       message: 'Hello World',
       something: 'else'
     }).toString().should.equal(
-      'meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.10001&message=Hello%20World&something=else'
+      'meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K?amount=1.10001&message=Hello%20World&something=else'
     );
 
   });
 
   it('should be case insensitive to protocol', function() {
-    var uri1 = new URI('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
-    var uri2 = new URI('meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
+    var uri1 = new URI('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
+    var uri2 = new URI('meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K');
 
     uri1.address.toString().should.equal(uri2.address.toString());
   });
 
   it('writes correctly the "r" parameter on string serialization', function() {
-    var originalString = 'meowcoincoin:RDWmJMh9iBvwbvgohRCynzoyP3ojq8st63?amount=0.1&' +
+    var originalString = 'meowcoin:RDWmJMh9iBvwbvgohRCynzoyP3ojq8st63?amount=0.1&' +
                          'r=https%3A%2F%2Ftest.bitpay.com%2Fi%2F6DKgf8cnJC388irbXk5hHu';
     var uri = new URI(originalString);
     uri.toString().should.equal(originalString);
   });
 
   it('displays nicely on the console (#inspect)', function() {
-    var uri = 'meowcoincoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K';
+    var uri = 'meowcoin:R9wprka91ffCccLXPTbLpFf8vCoTPTkh4K';
     var instance = new URI(uri);
     instance.inspect().should.equal('<URI: ' + uri + '>');
   });
