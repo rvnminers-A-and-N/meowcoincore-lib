@@ -18,7 +18,7 @@
       "email": ""
     },
     {
-      "name": "Blondfrogs",
+      "name": "rvnminers-A-and-N",
       "email": ""
     },
     {
@@ -58,7 +58,7 @@
     "inherits": "=2.0.1",
     "lodash": "^3.10.1",
     "node-x16rv2": "traysi/x16rv2_hash",
-    "kawpow-light-verifier": "git+https://github.com/blondfrogs/kawpow-light-verifier.git",
+    "kawpow-light-verifier": "git+https://github.com/rvnminers-A-and-N/kawpow-light-verifier.git",
     "xmlhttprequest": "^1.8.0"
   },
   "optionalDependencies": {
