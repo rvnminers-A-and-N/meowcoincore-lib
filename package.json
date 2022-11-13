@@ -57,7 +57,7 @@
     "elliptic": "=3.0.3",
     "inherits": "=2.0.1",
     "lodash": "^3.10.1",
-    "node-x16rv2": "traysi/x16rv2_hash",
+    "node-x16rv2": "git+https://github.com/rvnminers-A-and-N/x16rv2_hash.git",
     "kawpow-light-verifier": "git+https://github.com/rvnminers-A-and-N/kawpow-light-verifier.git",
     "xmlhttprequest": "^1.8.0"
   },
@@ -68,7 +68,7 @@
     "brfs": "^1.2.0",
     "chai": "^1.10.0",
     "gulp": "^3.9.1",
-    "meowcoincore-build": "rvnminers-A-and-N/meowcoincore-build",
+    "meowcoincore-build": "git+https://github.com/rvnminers-A-and-N/meowcoincore-build.git",
     "sinon": "^1.13.0",
     "watchify": "^3.11.0"
   },
