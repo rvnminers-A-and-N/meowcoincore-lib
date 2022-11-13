@@ -2,15 +2,15 @@
 
 var should = require('chai').should();
 var expect = require('chai').expect;
-var ravencore = require('../..');
+var meowcoincore = require('../..');
 
-var BufferUtil = ravencore.util.buffer;
-var Script = ravencore.Script;
-var Networks = ravencore.Networks;
-var Opcode = ravencore.Opcode;
-var PublicKey = ravencore.PublicKey;
-var Address = ravencore.Address;
-var Asset = ravencore.Asset;
+var BufferUtil = meowcoincore.util.buffer;
+var Script = meowcoincore.Script;
+var Networks = meowcoincore.Networks;
+var Opcode = meowcoincore.Opcode;
+var PublicKey = meowcoincore.PublicKey;
+var Address = meowcoincore.Address;
+var Asset = meowcoincore.Asset;
 
 describe('Script', function() {
 
@@ -288,7 +288,7 @@ describe('Script', function() {
       // from txid: 5c85ed63469aa9971b5d01063dbb8bcdafd412b2f51a3d24abf2e310c028bbf8
       // and input index: 5
       var scriptBuffer = new Buffer('483045022050eb59c79435c051f45003d9f82865c8e4df5699d7722e77113ef8cadbd92109022100d4ab233e070070eb8e0e62e3d2d2eb9474a5bf135c9eda32755acb0875a6c20601', 'hex');
-      var script = ravencore.Script.fromBuffer(scriptBuffer);
+      var script = meowcoincore.Script.fromBuffer(scriptBuffer);
       script.isPublicKeyIn().should.equal(true);
     });
   });
@@ -496,7 +496,7 @@ describe('Script', function() {
       Script('OP_0').isPushOnly().should.equal(true);
       Script('OP_0 OP_RETURN').isPushOnly().should.equal(false);
       Script('OP_PUSHDATA1 5 0x1010101010').isPushOnly().should.equal(true);
-      // like ravend, we regard OP_RESERVED as being "push only"
+      // like meowcoind, we regard OP_RESERVED as being "push only"
       Script('OP_RESERVED').isPushOnly().should.equal(true);
     });
   });
@@ -754,8 +754,8 @@ describe('Script', function() {
 
   describe('#buildWitnessMultisigOutFromScript', function() {
     it('it will build nested witness scriptSig', function() {
-      var redeemScript = ravencore.Script();
-      var redeemHash = ravencore.crypto.Hash.sha256(redeemScript.toBuffer());
+      var redeemScript = meowcoincore.Script();
+      var redeemHash = meowcoincore.crypto.Hash.sha256(redeemScript.toBuffer());
       var s = Script.buildWitnessMultisigOutFromScript(redeemScript);
       var buf = s.toBuffer();
       buf[0].should.equal(0);
@@ -1063,7 +1063,7 @@ describe('Script', function() {
   });
 
   describe('#getSignatureOperationsCount', function() {
-    // comes from ravend src/test/sigopcount_tests
+    // comes from meowcoind src/test/sigopcount_tests
     // only test calls to function with boolean param, not signature ref param
     var pubKeyHexes = [
       '022df8750480ad5b26950b25c7ba79d3e37d75f640f8e5d9bcd5b150a0f85014da',
@@ -1089,7 +1089,7 @@ describe('Script', function() {
     });
     it('should handle P2SH-multisig-in scripts from utility', function() {
       // create a well-formed signature, does not need to match pubkeys
-      var signature = ravencore.crypto.Signature.fromString('30060201FF0201FF');
+      var signature = meowcoincore.crypto.Signature.fromString('30060201FF0201FF');
       var signatures = [ signature.toBuffer() ];
       var p2sh = Script.buildP2SHMultisigIn(pubKeyHexes, 1, signatures, {});
       p2sh.getSignatureOperationsCount(true).should.equal(0);

@@ -5,13 +5,13 @@ var should = require('chai').should();
 var expect = require('chai').expect;
 var _ = require('lodash');
 
-var ravencore = require('../../..');
-var Transaction = ravencore.Transaction;
-var PrivateKey = ravencore.PrivateKey;
-var Address = ravencore.Address;
-var Script = ravencore.Script;
-var Signature = ravencore.crypto.Signature;
-var MultiSigScriptHashInput = ravencore.Transaction.Input.MultiSigScriptHash;
+var meowcoincore = require('../../..');
+var Transaction = meowcoincore.Transaction;
+var PrivateKey = meowcoincore.PrivateKey;
+var Address = meowcoincore.Address;
+var Script = meowcoincore.Script;
+var Signature = meowcoincore.crypto.Signature;
+var MultiSigScriptHashInput = meowcoincore.Transaction.Input.MultiSigScriptHash;
 
 describe('MultiSigScriptHashInput', function() {
 

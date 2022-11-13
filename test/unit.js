@@ -3,9 +3,9 @@
 var should = require('chai').should();
 var expect = require('chai').expect;
 
-var ravencore = require('..');
-var errors = ravencore.errors;
-var Unit = ravencore.Unit;
+var meowcoincore = require('..');
+var errors = meowcoincore.errors;
+var Unit = meowcoincore.Unit;
 
 describe('Unit', function() {
 

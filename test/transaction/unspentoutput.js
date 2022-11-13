@@ -5,8 +5,8 @@ var chai = require('chai');
 var should = chai.should();
 var expect = chai.expect;
 
-var ravencore = require('../..');
-var UnspentOutput = ravencore.Transaction.UnspentOutput;
+var meowcoincore = require('../..');
+var UnspentOutput = meowcoincore.Transaction.UnspentOutput;
 
 describe('UnspentOutput', function() {
 

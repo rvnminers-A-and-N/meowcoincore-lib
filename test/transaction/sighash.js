@@ -4,9 +4,9 @@ var buffer = require('buffer');
 
 var chai = require('chai');
 var should = chai.should();
-var ravencore = require('../../');
-var Script = ravencore.Script;
-var Transaction = ravencore.Transaction;
+var meowcoincore = require('../../');
+var Script = meowcoincore.Script;
+var Transaction = meowcoincore.Transaction;
 var sighash = Transaction.sighash;
 
 var vectors_sighash = require('../data/sighash.json');
@@ -18,7 +18,7 @@ describe('sighash', function() {
       // First element is just a row describing the next ones
       return;
     }
-    it('test vector from ravend #' + i + ' (' + vector[4].substring(0, 16) + ')', function() {
+    it('test vector from meowcoind #' + i + ' (' + vector[4].substring(0, 16) + ')', function() {
       var txbuf = new buffer.Buffer(vector[0], 'hex');
       var scriptbuf = new buffer.Buffer(vector[1], 'hex');
       var subscript = Script(scriptbuf);

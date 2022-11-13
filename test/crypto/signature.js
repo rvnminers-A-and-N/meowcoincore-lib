@@ -2,14 +2,14 @@
 
 var _ = require('lodash');
 var should = require('chai').should();
-var ravencore = require('../..');
-var BN = ravencore.crypto.BN;
-var Signature = ravencore.crypto.Signature;
-var JSUtil = ravencore.util.js;
-var Interpreter = ravencore.Script.Interpreter;
+var meowcoincore = require('../..');
+var BN = meowcoincore.crypto.BN;
+var Signature = meowcoincore.crypto.Signature;
+var JSUtil = meowcoincore.util.js;
+var Interpreter = meowcoincore.Script.Interpreter;
 
-var sig_canonical = require('../data/ravend/sig_canonical');
-var sig_noncanonical = require('../data/ravend/sig_noncanonical');
+var sig_canonical = require('../data/meowcoind/sig_canonical');
+var sig_noncanonical = require('../data/meowcoind/sig_noncanonical');
 
 describe('Signature', function() {
 
@@ -251,7 +251,7 @@ describe('Signature', function() {
     });
 
 
-    describe('ravend fixtures', function() {
+    describe('meowcoind fixtures', function() {
       var test_sigs = function(set, expected) {
         var i = 0;
         set.forEach(function(vector) {

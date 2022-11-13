@@ -4,9 +4,9 @@
 var should = require('chai').should();
 var expect = require('chai').expect;
 
-var ravencore = require('../..');
-var errors = ravencore.errors;
-var BufferUtil = ravencore.util.buffer;
+var meowcoincore = require('../..');
+var errors = meowcoincore.errors;
+var BufferUtil = meowcoincore.util.buffer;
 
 describe('buffer utils', function() {
 

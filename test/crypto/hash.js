@@ -1,8 +1,8 @@
 'use strict';
 
 require('chai').should();
-var ravencore = require('../..');
-var Hash = ravencore.crypto.Hash;
+var meowcoincore = require('../..');
+var Hash = meowcoincore.crypto.Hash;
 
 describe('Hash', function() {
   var buf = new Buffer([0, 1, 2, 3, 253, 254, 255]);

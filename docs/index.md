@@ -1,10 +1,10 @@
-# Ravencore v0.14
+# Meowcoincore v0.14
 
 ## Principles
 
-Ravencoin is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the ravencoin network allows for highly resilient ravencoin infrastructure, and the developer community needs reliable, open-source tools to implement ravencoin apps and services. Ravencore provides a reliable API for JavaScript apps that need to interface with ravencoin.
+Meowcoincoin is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the meowcoincoin network allows for highly resilient meowcoincoin infrastructure, and the developer community needs reliable, open-source tools to implement meowcoincoin apps and services. Meowcoincore provides a reliable API for JavaScript apps that need to interface with meowcoincoin.
 
-To get started, just `npm install ravencore` or `bower install ravencore`.
+To get started, just `npm install meowcoincore` or `bower install meowcoincore`.
 
 # Documentation Index
 
@@ -17,10 +17,10 @@ To get started, just `npm install ravencore` or `bower install ravencore`.
 
 ## Payment Handling
 * [Using Different Units](unit.md)
-* [Acknowledging and Requesting Payments: ravencoin URIs](uri.md)
+* [Acknowledging and Requesting Payments: meowcoincoin URIs](uri.md)
 * [The Transaction Class](transaction.md)
 
-## Ravencoin Internals
+## Meowcoincoin Internals
 * [Scripts](script.md)
 * [Block](block.md)
 
@@ -35,25 +35,25 @@ To get started, just `npm install ravencore` or `bower install ravencore`.
 
 Some functionality is implemented as a module that can be installed separately:
 
-* [Payment Protocol Support](https://github.com/RavenDevKit/ravencore-payment-protocol)
-* [Peer to Peer Networking](https://github.com/RavenDevKit/ravencore-p2p)
-* [Ravencoin Core JSON-RPC](https://github.com/RavenDevKit/ravend-rpc)
-* [Payment Channels](https://github.com/RavenDevKit/ravencore-channel)
-* [Mnemonics](https://github.com/RavenDevKit/ravencore-mnemonic)
-* [Elliptical Curve Integrated Encryption Scheme](https://github.com/RavenDevKit/ravencore-ecies)
-* [Blockchain Explorers](https://github.com/RavenDevKit/ravencore-explorers)
-* [Signed Messages](https://github.com/RavenDevKit/ravencore-message)
+* [Payment Protocol Support](https://github.com/MeowcoinDevKit/meowcoincore-payment-protocol)
+* [Peer to Peer Networking](https://github.com/MeowcoinDevKit/meowcoincore-p2p)
+* [Meowcoincoin Core JSON-RPC](https://github.com/MeowcoinDevKit/meowcoind-rpc)
+* [Payment Channels](https://github.com/MeowcoinDevKit/meowcoincore-channel)
+* [Mnemonics](https://github.com/MeowcoinDevKit/meowcoincore-mnemonic)
+* [Elliptical Curve Integrated Encryption Scheme](https://github.com/MeowcoinDevKit/meowcoincore-ecies)
+* [Blockchain Explorers](https://github.com/MeowcoinDevKit/meowcoincore-explorers)
+* [Signed Messages](https://github.com/MeowcoinDevKit/meowcoincore-message)
 
 # Examples
 
 ## Create and Save a Private Key
 
 ```javascript
-var privateKey = new ravencore.PrivateKey();
+var privateKey = new meowcoincore.PrivateKey();
 
 var exported = privateKey.toWIF();
 // e.g. L3T1s1TYP9oyhHpXgkyLoJFGniEgkv2Jhi138d7R2yJ9F4QdDU2m
-var imported = ravencore.PrivateKey.fromWIF(exported);
+var imported = meowcoincore.PrivateKey.fromWIF(exported);
 var hexa = privateKey.toString();
 // e.g. 'b9de6e778fe92aa7edb69395556f843f1dce0448350112e14906efc2a80fa61a'
 ```
@@ -68,7 +68,7 @@ var address = privateKey.toAddress();
 
 ```javascript
 // Build a 2-of-3 address from public keys
-var p2shAddress = new ravencore.Address([publicKey1, publicKey2, publicKey3], 2);
+var p2shAddress = new meowcoincore.Address([publicKey1, publicKey2, publicKey3], 2);
 ```
 
 ## Request a Payment
@@ -78,7 +78,7 @@ var paymentInfo = {
   address: '1DNtTk4PUCGAdiNETAzQFWZiy2fCHtGnPx',
   amount: 120000 //satoshis
 };
-var uri = new ravencore.URI(paymentInfo).toString();
+var uri = new meowcoincore.URI(paymentInfo).toString();
 ```
 
 ## Create a Transaction

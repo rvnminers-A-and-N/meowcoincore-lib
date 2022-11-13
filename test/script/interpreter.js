@@ -2,23 +2,23 @@
 
 var should = require('chai').should();
 var sinon = require('sinon');
-var ravencore = require('../..');
-var Interpreter = ravencore.Script.Interpreter;
-var Transaction = ravencore.Transaction;
-var PrivateKey = ravencore.PrivateKey;
-var Script = ravencore.Script;
-var BN = ravencore.crypto.BN;
-var BufferWriter = ravencore.encoding.BufferWriter;
-var Opcode = ravencore.Opcode;
+var meowcoincore = require('../..');
+var Interpreter = meowcoincore.Script.Interpreter;
+var Transaction = meowcoincore.Transaction;
+var PrivateKey = meowcoincore.PrivateKey;
+var Script = meowcoincore.Script;
+var BN = meowcoincore.crypto.BN;
+var BufferWriter = meowcoincore.encoding.BufferWriter;
+var Opcode = meowcoincore.Opcode;
 var _ = require('lodash');
 
-var script_valid = require('../data/ravend/script_valid');
-var script_invalid = require('../data/ravend/script_invalid');
-var tx_valid = require('../data/ravend/tx_valid');
-var tx_invalid = require('../data/ravend/tx_invalid');
+var script_valid = require('../data/meowcoind/script_valid');
+var script_invalid = require('../data/meowcoind/script_invalid');
+var tx_valid = require('../data/meowcoind/tx_valid');
+var tx_invalid = require('../data/meowcoind/tx_invalid');
 
-//the script string format used in ravend data tests
-Script.fromravendString = function(str) {
+//the script string format used in meowcoind data tests
+Script.frommeowcoindString = function(str) {
   var bw = new BufferWriter();
   var tokens = str.split(' ');
   for (var i = 0; i < tokens.length; i++) {
@@ -301,8 +301,8 @@ describe('Interpreter', function() {
   };
 
   var testFixture = function(vector, expected) {
-    var scriptSig = Script.fromravendString(vector[0]);
-    var scriptPubkey = Script.fromravendString(vector[1]);
+    var scriptSig = Script.frommeowcoindString(vector[0]);
+    var scriptPubkey = Script.frommeowcoindString(vector[1]);
     var flags = getFlags(vector[2]);
 
     var hashbuf = new Buffer(32);
@@ -336,7 +336,7 @@ describe('Interpreter', function() {
     var verified = interp.verify(scriptSig, scriptPubkey, spendtx, 0, flags);
     verified.should.equal(expected);
   };
-  describe('ravend script evaluation fixtures', function() {
+  describe('meowcoind script evaluation fixtures', function() {
     var testAllFixtures = function(set, expected) {
       var c = 0;
       set.forEach(function(vector) {
@@ -358,7 +358,7 @@ describe('Interpreter', function() {
     testAllFixtures(script_invalid, false);
 
   });
-  describe('ravend transaction evaluation fixtures', function() {
+  describe('meowcoind transaction evaluation fixtures', function() {
     var test_txs = function(set, expected) {
       var c = 0;
       set.forEach(function(vector) {
@@ -378,9 +378,9 @@ describe('Interpreter', function() {
             var txoutnum = input[1];
             var scriptPubKeyStr = input[2];
             if (txoutnum === -1) {
-              txoutnum = 0xffffffff; //ravend casts -1 to an unsigned int
+              txoutnum = 0xffffffff; //meowcoind casts -1 to an unsigned int
             }
-            map[txid + ':' + txoutnum] = Script.fromravendString(scriptPubKeyStr);
+            map[txid + ':' + txoutnum] = Script.frommeowcoindString(scriptPubKeyStr);
           });
 
           var tx = new Transaction(txhex);

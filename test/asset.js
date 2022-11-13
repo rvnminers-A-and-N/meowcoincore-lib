@@ -6,8 +6,8 @@ var chai = require('chai');
 var should = chai.should();
 var expect = chai.expect;
 
-var ravencore = require('..');
-var Asset = ravencore.Asset;
+var meowcoincore = require('..');
+var Asset = meowcoincore.Asset;
 
 describe('Asset', function () {
   // var buf = Buffer.concat([new Buffer([60]), pubkeyhash]);

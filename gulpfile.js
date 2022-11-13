@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var ravencoreTasks = require('ravencore-build');
+var meowcoincoreTasks = require('meowcoincore-build');
 
-ravencoreTasks('lib');
+meowcoincoreTasks('lib');
 gulp.task('default', ['lint', 'test', 'browser', 'coverage']);

@@ -1,22 +1,22 @@
 'use strict';
 
-var ravencore = require('../..');
+var meowcoincore = require('../..');
 var BN = require('../../lib/crypto/bn');
 var Hash = require('../../lib/crypto/hash');
-var BufferReader = ravencore.encoding.BufferReader;
-var BufferWriter = ravencore.encoding.BufferWriter;
-var BlockHeader = ravencore.BlockHeader;
-var Block = ravencore.Block;
+var BufferReader = meowcoincore.encoding.BufferReader;
+var BufferWriter = meowcoincore.encoding.BufferWriter;
+var BlockHeader = meowcoincore.BlockHeader;
+var Block = meowcoincore.Block;
 var chai = require('chai');
 var fs = require('fs');
 var should = chai.should();
-var Transaction = ravencore.Transaction;
+var Transaction = meowcoincore.Transaction;
 
 var dataRawBlockBuffer = fs.readFileSync('test/data/blk220909.dat');
 var dataRawBlockBinary = fs.readFileSync('test/data/blk220909.dat', 'binary');
 var dataJson = fs.readFileSync('test/data/blk220909.json').toString();
 var data = require('../data/blk220909');
-var dataBlocks = require('../data/ravend/blocks');
+var dataBlocks = require('../data/meowcoind/blocks');
 
 describe('Block', function() {
 

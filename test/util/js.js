@@ -4,8 +4,8 @@
 var should = require('chai').should();
 var expect = require('chai').expect;
 
-var ravencore = require('../..');
-var JSUtil = ravencore.util.js;
+var meowcoincore = require('../..');
+var JSUtil = meowcoincore.util.js;
 
 describe('js utils', function() {
 

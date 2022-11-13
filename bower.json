@@ -1,18 +1,18 @@
 {
-  "name": "ravencore-lib",
-  "main": "./ravencore-lib.js",
+  "name": "meowcoincore-lib",
+  "main": "./meowcoincore-lib.js",
   "version": "1.0.5",
-  "homepage": "https://github.com/RavenDevKit/ravencore-lib",
+  "homepage": "https://github.com/MeowcoinDevKit/meowcoincore-lib",
   "authors": [
     "Under"
   ],
-  "description": "A pure, powerful core for your ravencoin project.",
+  "description": "A pure, powerful core for your meowcoincoin project.",
   "moduleType": [
     "globals"
   ],
   "keywords": [
-    "ravencoin",
-    "ravencore",
+    "meowcoincoin",
+    "meowcoincore",
     "rvn",
     "satoshi"
   ],
@@ -33,6 +33,6 @@
     "docs",
     "package.json",
     "package-lock.json",
-    "ravencoin-utils"
+    "meowcoincoin-utils"
   ]
 }
