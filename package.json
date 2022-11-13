@@ -2,7 +2,7 @@
   "name": "meowcoincore-lib",
   "version": "1.0.6",
 
-  "description": "A pure and powerful JavaScript Meowcoincoin library.",
+  "description": "A pure and powerful JavaScript Meowcoin library.",
   "author": "Under",
   "main": "index.js",
   "scripts": {
@@ -44,7 +44,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/MeowcoinDevKit/meowcoincore-lib.git"
+    "url": "https://github.com/rvnminers-A-and-N/meowcoincore-lib.git"
   },
   "browser": {
     "request": "browser-request"
@@ -62,13 +62,13 @@
     "xmlhttprequest": "^1.8.0"
   },
   "optionalDependencies": {
-    "@meowcoindevkit/node-x16r": "^1.0.2"
+    "@ravencoindevkit/node-x16r": "^1.0.2"
   },
   "devDependencies": {
     "brfs": "^1.2.0",
     "chai": "^1.10.0",
     "gulp": "^3.9.1",
-    "meowcoincore-build": "MeowcoinDevKit/meowcoincore-build",
+    "meowcoincore-build": "rvnminers-A-and-N/meowcoincore-build",
     "sinon": "^1.13.0",
     "watchify": "^3.11.0"
   },
