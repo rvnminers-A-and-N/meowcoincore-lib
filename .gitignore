@@ -16,9 +16,9 @@ report
 .DS_Store
 
 
-ravencore-lib.js
-ravencore-lib.min.js
-ravencore-lib.js.sig
-ravencore-lib.min.js.sig
+meowcoincore-lib.js
+meowcoincore-lib.min.js
+meowcoincore-lib.js.sig
+meowcoincore-lib.min.js.sig
 tests.js
 .vscode/
