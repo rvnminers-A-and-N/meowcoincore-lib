@@ -62,7 +62,7 @@
     "xmlhttprequest": "^1.8.0"
   },
   "optionalDependencies": {
-    "@ravencoindevkit/node-x16r": "^1.0.2"
+    "@ravendevkit/node-x16r": "^1.0.2"
   },
   "devDependencies": {
     "brfs": "^1.2.0",
